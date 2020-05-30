@@ -7,7 +7,7 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/main]
+[bar/eDP1]
 monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 2.5%
@@ -28,13 +28,43 @@ font-1 = "Noto Sans Mono:size=10;1"
 font-2 = "Noto Sans Symbols:size=10;1"
 font-3 = "Noto Sans Symbols2:size=10;1"
 
-modules-left = date xwindow
+modules-left = date i3 xwindow
 modules-center =
 modules-right = pulseaudio backlight eth1 wlan cpu battery powermenu
 
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
+
+[bar/DP1]
+monitor = ${env:MONITOR:DP1}
+width = 100%
+height = 2.5%
+radius = 6.0
+fixed-center = false
+#bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+line-size = 2
+padding = 1
+module-margin = 1
+
+font-0 = "Noto Sans Mono:size=10;1"
+font-1 = "Noto Sans Mono:size=10;1"
+font-2 = "Noto Sans Symbols:size=10;1"
+font-3 = "Noto Sans Symbols2:size=10;1"
+
+modules-left = date i3 xwindow
+modules-center =
+modules-right = pulseaudio backlight eth1 wlan cpu battery powermenu
+
+tray-position = right
+tray-padding = 2
+tray-maxsize = 24
+
 
 [global/wm]
 margin-top = 0
@@ -124,8 +154,34 @@ label = %date% %time%
 [settings]
 screenchange-reload = true
 
-[module/workspaces]
-type = internal/i3
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+
+label-focused = " %name% "
+label-focused-underline = #fba922
+
+label-occupied = " %name% "
+label-occupied-foreground = #ffaa00
+
+label-urgent = " %name% "
+label-urgent-underline = #9b0a20
+
+label-empty = " %name% "
+label-empty-foreground = #555555
+
+icon-0 = I
+icon-1 = II
+icon-2 = III
+icon-3 = IV
+icon-4 = V
+icon-5 = VI
+icon-6 = VII
+icon-7 = IIX
+icon-8 = IX
+icon-9 = X
 
 [module/powermenu]
 type = custom/menu
@@ -152,4 +208,47 @@ label-muted-foreground = #666
 ; Only applies if <ramp-volume> is used5
 ramp-volume-0 = 🔉
 ramp-volume-1 = 🔊
+
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;VII
+ws-icon-8 = 9;IIX
+ws-icon-9 = 10;IX
+ws-icon-default = ♟
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-background = #e60053
+
+label-focused = %index%
+label-focused-foreground = #ffffff
+label-focused-underline = #fba922
+label-focused-padding = 2 
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 2
+
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+
+label-separator = |
+label-separator-foreground = #ffb52a
+
+
 

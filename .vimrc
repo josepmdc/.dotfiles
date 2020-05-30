@@ -20,7 +20,7 @@ let mapleader = ","
 set modelines=0
 
 " Show line numbers
-set relativenumber
+set number relativenumber 
 
 " Show file stats
 set ruler
@@ -32,7 +32,8 @@ set visualbell
 set encoding=utf-8
 
 " Whitespace
-set wrap
+set nowrap
+set linebreak
 set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=2
@@ -83,6 +84,8 @@ vnoremap <F1> :set invfullscreen<CR>
 
 " Formatting
 map <leader>q gqip
+set smartindent
+
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
@@ -96,12 +99,11 @@ set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-colorscheme onehalfdark
-
+" ~/.vim/colors 
+colorscheme OceanicNext
 
 " Select all text
 map <leader>a ggVG
 
 
+set colorcolumn=80
