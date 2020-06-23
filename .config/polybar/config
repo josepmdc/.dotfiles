@@ -191,7 +191,7 @@ label-close = x
 label-separator = |
 
 menu-0-0 = Suspend 
-menu-0-0-exec = systemctl suspend
+menu-0-0-exec = i3lock & systemctl suspend
 menu-0-1 = Power Off 
 menu-0-1-exec = systemctl poweroff
 menu-0-2 = Reboot 
@@ -244,8 +244,9 @@ label-visible-underline = #555555
 label-visible-padding = 2
 
 label-urgent = %index%
-label-urgent-foreground = #000000
+label-urgent-foreground = #ffffff
 label-urgent-background = #bd2c40
+label-urgent-padding = 2
 
 label-separator = |
 label-separator-foreground = #ffb52a

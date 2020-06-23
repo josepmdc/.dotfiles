@@ -56,7 +56,7 @@ bindsym $mod+d exec --no-startup-id exe=`dmenu_path | dmenu -nb '#303030' -sb '#
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+#bindsym $mod+l focus up
 bindsym $mod+ntilde focus right
 
 # alternatively, you can use the cursor keys:
@@ -181,7 +181,7 @@ bindsym $mod+r mode "resize"
 #}
                                                                             
 client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
-client.focused          #2b3136 #2b3136 #ffffff #d9d9d9 #d9d9d9                                                                            
+client.focused          #2b3136 #2b3136 #ffffff #d9d9d9 #00444d
 
 # Hide window borders and titlebars
 for_window [class="^.*"] border pixel 0
@@ -190,12 +190,12 @@ for_window [class="^.*"] border pixel 0
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Add gaps
-#gaps inner 10
-#gaps outer 0
+gaps inner 0
+gaps outer 0
 #smart_gaps on
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper2.jpg
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
@@ -212,4 +212,5 @@ bindsym Next exec msi-perkeyrgb --model GS65 -d
 # Handle muliple displays
 exec_always --no-startaup-id $HOME/.config/i3/display.sh
 
-
+# Lock screen and suspend
+bindsym $mod+l exec "i3lock && systemctl suspend"

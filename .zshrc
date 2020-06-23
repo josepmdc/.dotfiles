@@ -8,7 +8,8 @@ export ZSH="/home/josepm/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="spaceship"
+SPACESHIP_GOLANG_SYMBOL="Go "
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -104,11 +105,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias dotfiles='/usr/bin/git --git-dir=/home/josepm/.dotfiles/ --work-tree=/home/josepm'
-
-alias goland='nohup ~/jetbrains/goland &'
-alias androidstudio='nohup ~/jetbrains/studio &'
-
-
-
-
+alias ffs='fn(){ firefox -new-tab "google.com/search?q=$1"};fn'
+alias ffnt='fn(){ firefox -new-tab $1};fn'
+alias goland='nohup ~/jetbrains/goland > /dev/null 2>&1&'
+alias androidstudio='nohup ~/jetbrains/studio > /dev/null 2>&1&'
+alias vim='nvim'
 

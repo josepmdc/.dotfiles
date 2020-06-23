@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/josepm/go/src/malayo'
+let g:netrw_dirhist_9='/home/josepm/go/src/malayo/database'
+let g:netrw_dirhist_8='/home/josepm/go/src/malayo'
+let g:netrw_dirhist_7='/home/josepm/go/src/malayo/database'
+let g:netrw_dirhist_6='/home/josepm/go/src/malayo'
+let g:netrw_dirhist_5='/home/josepm/go/src/malayo/api'
+let g:netrw_dirhist_4='/home/josepm/go/src/malayo/api/v1'
+let g:netrw_dirhist_3='/home/josepm/go/src/malayo/api'
+let g:netrw_dirhist_2='/home/josepm/go/src/malayo'
+let g:netrw_dirhist_1='/home/josepm/go/src/malayo/indexing'

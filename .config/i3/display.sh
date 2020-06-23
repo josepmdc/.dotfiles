@@ -18,6 +18,8 @@ virtual=VIRTUAL1
 
 if xrandr | grep "$thundervolt disconnected"; then
   xrandr --output "$thundervolt" --off --output "$laptop" --mode 1920x1080 --auto
+  sh ./.config/polybar/launch.sh &
 else
   xrandr --output "$thundervolt" --mode 1920x1080 --output "$laptop" --primary --mode 1920x1080 --left-of "$thundervolt" 
+  sh ./.config/polybar/launch.sh &
 fi
