@@ -12,7 +12,7 @@ colors:
     black:   '0x282828'
     red:     '0xfa3205'
     green:   '0x04e091'
-    yellow:  '0xd79921'
+    yellow:  '0xD79921'
     blue:    '0x458588'
     magenta: '0xb16286'
     cyan:    '0x689d6a'

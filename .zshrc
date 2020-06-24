@@ -104,10 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export GOPATH=~/go
+export PATH=$PATH:$(go env GOPATH)/bin
+
 alias dotfiles='/usr/bin/git --git-dir=/home/josepm/.dotfiles/ --work-tree=/home/josepm'
 alias ffs='fn(){ firefox -new-tab "google.com/search?q=$1"};fn'
 alias ffnt='fn(){ firefox -new-tab $1};fn'
 alias goland='nohup ~/jetbrains/goland > /dev/null 2>&1&'
 alias androidstudio='nohup ~/jetbrains/studio > /dev/null 2>&1&'
 alias vim='nvim'
-

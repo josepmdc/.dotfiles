@@ -213,4 +213,4 @@ bindsym Next exec msi-perkeyrgb --model GS65 -d
 exec_always --no-startaup-id $HOME/.config/i3/display.sh
 
 # Lock screen and suspend
-bindsym $mod+l exec "i3lock && systemctl suspend"
+bindsym $mod+l exec "i3lock -i $HOME/Pictures/Wallpapers/wallpaper2.jpg && systemctl suspend"

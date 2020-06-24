@@ -1,5 +1,5 @@
 
-"Don't try to be vi compatible
+" Don't try to be vi compatible
 set nocompatible
 
 " Helps force plugins to load correctly when it is turned back on below
@@ -11,7 +11,6 @@ call plug#begin()
 " Color themes
 Plug 'franbach/miramare'
 Plug 'sainnhe/gruvbox-material'
-Plug 'https://github.com/YorickPeterse/happy_hacking.vim.git'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'davidosomething/vim-colors-meh'
 
@@ -22,6 +21,7 @@ Plug 'junegunn/fzf.vim'
 " Language support
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Toolbar
 Plug 'vim-airline/vim-airline'
@@ -92,7 +92,7 @@ nnoremap j gj
 nnoremap k gk
 
 " Open files search
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
 
 " Allow hidden buffers
 set hidden
@@ -139,11 +139,12 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 " ~/.vim/colors 
-"set termguicolors
-let g:miramare_enable_italic = 1
-let g:miramare_disable_italic_comment = 1
-colorscheme miramare
+set termguicolors
+let g:lego_enable_italic = 1
+let g:lego_disable_italic_comment = 1
 
+colorscheme lego 
+let g:airline_theme='miramare'
 " Select all text
 map <leader>a ggVG
 
@@ -161,3 +162,47 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 " Toogle netrw
 map <silent> <C-B> :Lexplore<CR>
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+nmap <silent> <C-s> :w<CR>
