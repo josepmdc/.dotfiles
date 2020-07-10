@@ -106,9 +106,14 @@ source $ZSH/oh-my-zsh.sh
 
 export GOPATH=~/go
 export PATH=$PATH:$(go env GOPATH)/bin
+export GOBIN=$(go env GOPATH)/bin
+
+export BAT_THEME="TwoDark"
 
 alias dotfiles='/usr/bin/git --git-dir=/home/josepm/.dotfiles/ --work-tree=/home/josepm'
-alias ffs='fn(){ firefox -new-tab "google.com/search?q=$1"};fn'
+alias s='fn(){ firefox -new-tab "https://duckduckgo.com/&q=$1"};fn'
+alias gs='fn(){ firefox -new-tab "https://google.com/search?q=$1"};fn'
+alias yt='fn(){ firefox -new-tab "https://youtube.com/results?search_query=$1"};fn'
 alias ffnt='fn(){ firefox -new-tab $1};fn'
 alias goland='nohup ~/jetbrains/goland > /dev/null 2>&1&'
 alias androidstudio='nohup ~/jetbrains/studio > /dev/null 2>&1&'
