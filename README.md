@@ -8,12 +8,12 @@ Clone the repo in your HOME directory:
 git clone https://github.com/josepmdc/dotfiles.git
 ```
 
-Define an alias so you can manage your dotfiles from any directory (change bashrc for zshrc if you are using zsh):
+Define an alias so you can manage your dotfiles from any directory (NOTE: Notice this writes an alias to the .zshrc file, change it if you are using another shell):
 ```
-echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
-Checkout the files in your HOME directory if you cloned my repo:
+Checkout the files in your HOME directory:
 ```
 dotfiles checkout
 ```
@@ -25,9 +25,9 @@ create a git bare repo:
 git init --bare $HOME/.dotfiles
 ```
 
-Define an alias so you can manage your dotfiles from any directory (change bashrc for zshrc if you are using zsh):
+Define an alias so you can manage your dotfiles from any directory (NOTE: Notice this writes an alias to the .zshrc file, change it if you are using another shell):
 ```
-echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
 
 Set git config to hide untracked files
