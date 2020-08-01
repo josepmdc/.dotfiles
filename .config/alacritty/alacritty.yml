@@ -30,6 +30,19 @@ colors:
     white:   '0xebdbb2'
 
 font:
-    normal: { family: FiraCode }
-    size: 11.0
+    size: 10.0
     use_thin_strokes: true
+    
+    normal: 
+      family: FiraCode
+      style: Regular
+
+    bold: 
+      family: FiraCode
+      style: Bold
+
+    italic: 
+      family: Fira Code
+      style: Italic
+
+

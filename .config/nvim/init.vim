@@ -50,6 +50,10 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
+let g:go_debug_windows = {
+      \ 'vars':       'rightbelow 60vnew',
+      \ 'stack':      'rightbelow 10new',
+\ }
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -91,6 +95,10 @@ runtime! macros/matchit.vim
 " Move up/down editor lines
 nnoremap j gj
 nnoremap k gk
+
+" Insert new line and stay in normal mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
 
 " Open files search
 " sudo pacman -S fzf
@@ -145,11 +153,14 @@ set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 " ~/.vim/colors 
-set termguicolors
-let g:lego_enable_italic = 1
-let g:lego_disable_italic_comment = 1
 
-colorscheme lego 
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme gruvbox-material 
 let g:airline_theme='miramare'
 
 set colorcolumn=80
