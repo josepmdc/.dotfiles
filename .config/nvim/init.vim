@@ -19,10 +19,16 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Language support
-Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'vim-scripts/dbext.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Go
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " SQL
+  Plug 'vim-scripts/dbext.vim'
+  " JS/TypeScript/React
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
 
 " Toolbar
 Plug 'vim-airline/vim-airline'
@@ -335,6 +341,10 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ 'coc-go', 
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-html',
+  \ 'coc-css',
   \ ]
 
 " ----------------------------------------------------

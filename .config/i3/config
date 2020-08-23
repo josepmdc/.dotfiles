@@ -200,6 +200,9 @@ exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper2.jpg
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
 
+# Swap Escape with Caps Lock
+exec_always --no-startup-id xmodmap ~/.xmodmap
+
 # Flameshot screenshot
 bindsym Print exec flameshot gui
 
@@ -210,7 +213,7 @@ bindsym Prior exec msi-perkeyrgb --model GS65 -s ffffff
 bindsym Next exec msi-perkeyrgb --model GS65 -d
 
 # Handle muliple displays
-exec_always --no-startaup-id $HOME/.config/i3/display.sh
+exec_always --no-startaup-id ./display.sh
 
 # Lock screen and suspend
 bindsym $mod+l exec "i3lock && systemctl suspend"

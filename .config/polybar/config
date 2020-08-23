@@ -193,7 +193,7 @@ label-separator = |
 menu-0-0 = Suspend 
 menu-0-0-exec = i3lock & systemctl suspend
 menu-0-1 = Power Off 
-menu-0-1-exec = systemctl poweroff
+menu-0-1-exec = poweroff
 menu-0-2 = Reboot 
 menu-0-2-exec = systemctl reboot
 
