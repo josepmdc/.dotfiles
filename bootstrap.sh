@@ -7,7 +7,7 @@ echo "Done!"
 echo "Installing pacman packages..."
   sudo pacman -S alacritty firefox chromium neovim code dmenu rofi docker \
                  flameshot i3lock hugo nodejs go rust python vlc git fzf \
-                 the_silver_searcher ranger zsh
+                 the_silver_searcher ranger zsh feh
 echo "Done!"
 
 echo "Installing yay..."
