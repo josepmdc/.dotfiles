@@ -197,7 +197,7 @@ gaps outer 0
 #smart_gaps on
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper2.jpg
+exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper.jp
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
