@@ -6,6 +6,7 @@
 3. [Dependencies](#dependencies)
 
 <a name="setup"/>
+
 ## 1. How to set up
 
 ### 1.1. If you want to use this config
@@ -46,6 +47,7 @@ dotfiles config --local status.showUntrackedFiles no
 ```
 
 <a name="adding_files"/>
+
 ## 2. Adding new files
 
 If you want to add new file you can just use
@@ -58,40 +60,41 @@ dotfiles commit -m "Commit message"
 ```
 
 <a name="dependencies"/>
+
 # 3. Dependencies
 
-### Desktop enviroment
+##### Desktop enviroment
 i3, polybar, i3lock
 
-### Application launchers
+##### Application launchers
 dmenu, rofi
 
-### File explorers
+##### File explorers
 ranger, nautilus
 
-### Screenshots
+##### Screenshots
 flameshot
 
-### Terminal
+##### Terminal
 alacritty 
 
-### Browsers
+##### Browsers
 firefox, chromium 
 
-### Editors
+##### Editors
 neovim, code oss
 
-### Programming languages
+##### Programming languages
 nodejs, go, rust, python
 
-### Source control
+##### Source control
 git
 
-### Miscellaneous development
+##### Miscellaneous development tools
 docker, hugo
 
-### Media player
+##### Media player
 vlc
 
-### Fuzzy finders
+##### Fuzzy finders
 fzf, the_silver_searcher 
