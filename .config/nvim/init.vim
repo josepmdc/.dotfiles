@@ -9,14 +9,14 @@ filetype off
 call plug#begin()
 
 " Color themes
-Plug 'franbach/miramare'
-Plug 'sainnhe/gruvbox-material'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'davidosomething/vim-colors-meh'
+  Plug 'franbach/miramare'
+  Plug 'sainnhe/gruvbox-material'
+  Plug 'kristijanhusak/vim-hybrid-material'
+  Plug 'davidosomething/vim-colors-meh'
 
 " fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
 " Language support
   Plug 'sheerun/vim-polyglot'
@@ -31,10 +31,10 @@ Plug 'junegunn/fzf.vim'
   Plug 'peitalin/vim-jsx-typescript'
 
 " Toolbar
-Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline'
 
 " Git
-Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -354,6 +354,7 @@ let g:coc_global_extensions = [
 " CTRL-s to save
 nmap <silent> <C-s> :w<CR>
 
+let g:fzf_layout = { 'window': { 'width' : 0.6, 'height' : 0.6 } }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],

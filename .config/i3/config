@@ -53,6 +53,8 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# launch rofi
+bindsym $mod+a exec --no-startup-id rofi -show drun -modi drun
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -98,7 +100,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
