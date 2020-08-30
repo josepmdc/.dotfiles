@@ -24,9 +24,9 @@ Checkout the files in your HOME directory:
 ```bash
 dotfiles checkout
 ```
-Run the init_dotfiles.sh script to install dependencies
+Run the bootstrap.sh script to install dependencies
 ```bash
-./init_dotfiles.sh
+./bootstrap.sh
 ```
 
 ### 1.2. If you want to manage your own
@@ -77,6 +77,9 @@ flameshot
 
 ##### Terminal
 alacritty 
+
+##### Shell
+zsh with spaceship theme, oh my zsh!
 
 ##### Browsers
 firefox, chromium 
