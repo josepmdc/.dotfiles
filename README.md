@@ -4,12 +4,13 @@
 1. [How to set up](#setup)  
 2. [Adding new files](#adding_files)  
 3. [Dependencies](#dependencies)
+4. [Keyboard shortcuts](#shortcuts)
 
 <a name="setup"/>
 
-## 1. How to set up
+## How to set up
 
-### 1.1. If you want to use this config
+#### 1. If you want to use this config
 Clone the repo in your HOME directory:
 ```bash
 git clone https://github.com/josepmdc/dotfiles.git
@@ -29,7 +30,7 @@ Run the bootstrap.sh script to install dependencies
 ./bootstrap.sh
 ```
 
-### 1.2. If you want to manage your own
+#### 2. If you want to manage your own
 
 create a git bare repo:
 ```bash
@@ -48,7 +49,7 @@ dotfiles config --local status.showUntrackedFiles no
 
 <a name="adding_files"/>
 
-## 2. Adding new files
+## Adding new files
 
 If you want to add new file you can just use
 ```bash
@@ -61,10 +62,10 @@ dotfiles commit -m "Commit message"
 
 <a name="dependencies"/>
 
-# 3. Dependencies
+## Dependencies
 
 ##### Desktop enviroment
-i3, polybar, i3lock
+i3, polybar, i3lock, feh
 
 ##### Application launchers
 dmenu, rofi
@@ -100,4 +101,10 @@ docker, hugo
 vlc
 
 ##### Fuzzy finders
-fzf, the_silver_searcher 
+fzf, the_silver_searcher
+
+<a name="shortcuts"/>
+
+## Keyboard shortcuts
+
+Coming soon
