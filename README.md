@@ -69,43 +69,83 @@ dotfiles commit -m "Commit message"
 ## Dependencies
 
 ##### Desktop enviroment
-i3, polybar, i3lock, feh
+| Name | Description |
+|------|-------------|
+| i3   | Window manager |
+| polybar | Status bar  |
+| i3lock | Screen locker |
+| feh | For setting the wallpaper |
 
 ##### Application launchers
-dmenu, rofi
+| Name | Description |
+|------|-------------|
+| dmenu | Small application launcher  | 
+| rofi  | window switcher, application launcher and dmenu replacement |
 
 ##### File explorers
-ranger, nautilus
+| Name | Description |
+|------|-------------|
+| ranger | TUI file explorer |
+| nautilus| GUI file explorer |
 
 ##### Screenshots
-flameshot
+| Name | Description |
+|------|-------------|
+| flameshot | Powerful screenshot software |
 
 ##### Terminal
-alacritty 
+| Name | Description |
+|------|-------------|
+| alacritty | Simple and fast terminal emulator | 
 
 ##### Shell
-zsh with spaceship theme, oh my zsh!
+| Name | Description |
+|------|-------------|
+| zsh  |  shell |
+| oh my zsh! | zsh framework |
+| spaceship | zsh theme |
 
 ##### Browsers
-firefox, chromium 
+| Name | Description |
+|------|-------------|
+| Firefox |  •ᴗ• |
+| Chromium |  (☞ﾟヮﾟ)☞ |
 
 ##### Editors
-neovim, code oss
+| Name | Description |
+|------|-------------|
+| neovim | Terminal text editor |
+| code oss | Open source VSCode |
 
 ##### Programming languages
-nodejs, go, rust, python
+| Name | Description |
+|------|-------------|
+| nodejs | ツ |
+| go | ٩( ᐛ )و|
+| rust | (/•-•)/ |
+| python | (＾∇＾) |
 
 ##### Source control
-git
+| Name | Description |
+|------|-------------|
+| git | ʘ‿ʘ |
 
 ##### Miscellaneous development tools
-docker, hugo
+| Name | Description |
+|------|-------------|
+| docker | Containers |
+| hugo | Static site generator |
 
 ##### Media player
-vlc
+| Name | Description |
+|------|-------------|
+| vlc | ◕‿◕ |
 
 ##### Fuzzy finders
-fzf, the_silver_searcher
+| Name | Description |
+|------|-------------|
+| fzf | file fuzzy finder, I mostly used it in vim |
+| the_silver_searcher | Code searching tool, also, I use it mostly in vim |
 
 <a name="shortcuts"/>
 
