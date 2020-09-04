@@ -29,10 +29,7 @@ Checkout the files in your HOME directory:
 ```bash
 dotfiles checkout
 ```
-Run the bootstrap.sh script to install dependencies
-```bash
-./bootstrap.sh
-```
+[Install Dependencies](#dependencies)
 
 #### 2. If you want to manage your own
 
@@ -67,6 +64,12 @@ dotfiles commit -m "Commit message"
 <a name="dependencies"/>
 
 ## Dependencies
+
+To install dependencies run the bootstrap.sh script
+```bash
+./bootstrap.sh
+```
+NOTE: To get the rounded borders you need to build and install from source from [this fork](https://github.com/josepmdc/i3), since it's not supported by i3 gaps
 
 ##### Desktop enviroment
 | Name | Description |
