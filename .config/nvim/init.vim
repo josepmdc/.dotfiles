@@ -31,7 +31,7 @@ call plug#begin()
   Plug 'peitalin/vim-jsx-typescript'
 
 " Toolbar
-  Plug 'vim-airline/vim-airline'
+  Plug 'itchyny/lightline.vim'
 
 " Git
   Plug 'tpope/vim-fugitive'
@@ -167,7 +167,17 @@ if exists('+termguicolors')
 endif
 
 colorscheme gruvbox-material 
-let g:airline_theme='miramare'
+
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=7

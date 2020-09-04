@@ -45,4 +45,7 @@ font:
       family: Fira Code
       style: Italic
 
-
+window:
+  padding:
+    x: 15
+    y: 15

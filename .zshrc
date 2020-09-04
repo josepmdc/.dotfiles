@@ -116,5 +116,4 @@ alias dotfiles='/usr/bin/git --git-dir=/home/josepm/.dotfiles/ --work-tree=/home
 alias search='fn(){ firefox -new-tab "https://google.com/search?q=$1"};fn'
 alias yt='fn(){ firefox -new-tab "https://youtube.com/results?search_query=$1"};fn'
 alias ffnt='fn(){ firefox -new-tab $1};fn'
-alias vim='nvim'
-alias vi='vim'
+alias vi='nvim'

@@ -6,6 +6,10 @@
 3. [Dependencies](#dependencies)
 4. [Keyboard shortcuts](#shortcuts)
 
+## Screenshots
+
+![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/desktop.png?raw=true)
+
 <a name="setup"/>
 
 ## How to set up
