@@ -26,7 +26,7 @@ echo "Installing ohmyzsh!..."
 echo "Done!"
 
 echo "Installing inertia zsh theme..."
-  git clone https://github.com/josepmdc/inertia.git
+  git clone https://github.com/josepmdc/inertia.git $HOME/dev/inertia
   ln -s "$HOME/dev/inertia/inertia.zsh-theme" "$ZSH_CUSTOM/themes/inertia.zsh-theme"
 echo "Done!"
 
