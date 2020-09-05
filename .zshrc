@@ -8,8 +8,7 @@ export ZSH="/home/josepm/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
-SPACESHIP_GOLANG_SYMBOL="Go "
+ZSH_THEME="inertia"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -117,3 +116,8 @@ alias search='fn(){ firefox -new-tab "https://google.com/search?q=$1"};fn'
 alias yt='fn(){ firefox -new-tab "https://youtube.com/results?search_query=$1"};fn'
 alias ffnt='fn(){ firefox -new-tab $1};fn'
 alias vi='nvim'
+
+# Declare the variable
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+

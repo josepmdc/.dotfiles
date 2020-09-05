@@ -106,7 +106,7 @@ NOTE: To get the rounded borders you need to build and install from source from 
 |------|-------------|
 | zsh  |  shell |
 | oh my zsh! | zsh framework |
-| spaceship | zsh theme |
+| inertia | my custom zsh theme |
 
 ##### Browsers
 | Name | Description |

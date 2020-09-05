@@ -130,6 +130,7 @@ set showcmd
 " Searching
 nnoremap / /\v
 vnoremap / /\v
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 set hlsearch
 set incsearch
 set ignorecase

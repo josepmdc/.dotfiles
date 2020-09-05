@@ -25,9 +25,32 @@ echo "Installing ohmyzsh!..."
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "Done!"
 
-echo "Installing spaceship zsh theme..."
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
+echo "Installing inertia zsh theme..."
+  git clone https://github.com/josepmdc/inertia.git
+  ln -s "$HOME/dev/inertia/inertia.zsh-theme" "$ZSH_CUSTOM/themes/inertia.zsh-theme"
 echo "Done!"
 
+echo "Installing i3..."
+  read -p "Install with rounded corners support? (Y/n): " confirm
 
+  if [[ "$confirm" =~ ^([nN][oO]|[nN])$ ]]; then  
+    mkdir ~/dev && cd ~/dev/
+
+    # clone the repository
+    git clone https://github.com/josepmdc/i3.git i3-gaps
+    cd i3-gaps
+
+    # compile & install
+    autoreconf --force --install
+    rm -rf build/
+    mkdir -p build && cd build/
+    
+    # Disabling sanitizers is important for release versions!
+    # The prefix and sysconfdir are, obviously, dependent on the distribution.
+    ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+    make && sudo make install
+  else
+    sudo pacman -S i3
+  fi
+
+echo "Done!"
