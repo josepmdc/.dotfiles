@@ -113,10 +113,10 @@ NOTE: To get the rounded borders you need to build and install from source from 
 | inertia | my custom zsh theme |
 
 ##### Browsers
-| Name | Description |
-|------|-------------|
-| Firefox |  •ᴗ• |
-| Chromium |  (☞ﾟヮﾟ)☞ |
+| Name |
+|------|
+| Firefox |
+| Chromium |
 
 ##### Editors
 | Name | Description |
@@ -125,17 +125,17 @@ NOTE: To get the rounded borders you need to build and install from source from 
 | code oss | Open source VSCode |
 
 ##### Programming languages
-| Name | Description |
-|------|-------------|
-| nodejs | ツ |
-| go | ٩( ᐛ )و|
-| rust | (/•-•)/ |
-| python | (＾∇＾) |
+| Name |
+|------|
+| nodejs |
+| go |
+| rust |
+| python |
 
 ##### Source control
-| Name | Description |
-|------|-------------|
-| git | ʘ‿ʘ |
+| Name |
+|------|
+| git | 
 
 ##### Miscellaneous development tools
 | Name | Description |
@@ -144,9 +144,9 @@ NOTE: To get the rounded borders you need to build and install from source from 
 | hugo | Static site generator |
 
 ##### Media player
-| Name | Description |
-|------|-------------|
-| vlc | ◕‿◕ |
+| Name |
+|------|
+| vlc |
 
 ##### Fuzzy finders
 | Name | Description |
