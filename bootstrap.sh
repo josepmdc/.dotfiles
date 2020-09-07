@@ -31,12 +31,11 @@ echo "Installing inertia zsh theme..."
 echo "Done!"
 
 echo "Installing i3..."
-  read -p "Install with rounded corners support? (Y/n): " confirm
+  read -p "Install with rounded corners support? (y/N): " confirm
 
-  if [[ "$confirm" =~ ^([nN][oO]|[nN])$ ]]; then  
-    mkdir ~/dev && cd ~/dev/
+  if [[ "$confirm" =~ ^([yY][eE][sS]|[yY])$ ]]; then  
+    mkdir -p ~/dev && cd ~/dev/
 
-    # clone the repository
     git clone https://github.com/josepmdc/i3.git i3-gaps
     cd i3-gaps
 
@@ -45,8 +44,6 @@ echo "Installing i3..."
     rm -rf build/
     mkdir -p build && cd build/
     
-    # Disabling sanitizers is important for release versions!
-    # The prefix and sysconfdir are, obviously, dependent on the distribution.
     ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
     make && sudo make install
   else
