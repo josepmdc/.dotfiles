@@ -33,21 +33,28 @@ echo "Done!"
 echo "Installing i3..."
   read -p "Install with rounded corners support? (y/N): " confirm
 
-  if [[ "$confirm" =~ ^([yY][eE][sS]|[yY])$ ]]; then  
-    mkdir -p ~/dev && cd ~/dev/
 
-    git clone https://github.com/josepmdc/i3.git i3-gaps
-    cd i3-gaps
+  read -p "Install with rounded corners support? (y/N): " confirm
 
-    # compile & install
-    autoreconf --force --install
-    rm -rf build/
-    mkdir -p build && cd build/
-    
-    ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-    make && sudo make install
-  else
-    sudo pacman -S i3
-  fi
+  case $confirm in
+    ([yY][eE][sS]|[yY])  
+      mkdir -p ~/dev && cd ~/dev/
+
+      git clone https://github.com/josepmdc/i3.git i3-gaps
+      cd i3-gaps
+
+      # compile & install
+      autoreconf --force --install
+      rm -rf build/
+      mkdir -p build && cd build/
+      
+      ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+      make && sudo make install
+      ;;
+
+    *)
+      sudo pacman -S i3
+      ;;
+  esac
 
 echo "Done!"
