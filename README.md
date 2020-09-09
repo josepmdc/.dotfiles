@@ -6,6 +6,8 @@
 3. [Dependencies](#dependencies)
 4. [Keyboard shortcuts](#shortcuts)
 
+#### This dotfiles are based on Manjaro, but they will probably work on any Arch based distro, and most things on any distro.
+
 ## Screenshots
 
 #### Desktop
