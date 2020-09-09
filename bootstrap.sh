@@ -33,9 +33,6 @@ echo "Done!"
 echo "Installing i3..."
   read -p "Install with rounded corners support? (y/N): " confirm
 
-
-  read -p "Install with rounded corners support? (y/N): " confirm
-
   case $confirm in
     ([yY][eE][sS]|[yY])  
       mkdir -p ~/dev && cd ~/dev/
