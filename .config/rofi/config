@@ -1,0 +1,6 @@
+rofi.theme: theme.rasi
+rofi.modi: combi
+rofi.font: Fira Code 12
+rofi.combi-modi: drun,run,ssh,window
+rofi.show-icons: true
+rofi.display-drun:
