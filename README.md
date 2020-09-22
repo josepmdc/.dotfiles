@@ -156,6 +156,11 @@ NOTE: To get the rounded borders you need to build and install from source from 
 | fzf | file fuzzy finder, I mostly used it in vim |
 | the_silver_searcher | Code searching tool, also, I use it mostly in vim |
 
+#### Compositor
+| Name | Description |
+|-------|------------|
+| Picom | lightweight compositor for X11 |
+
 <a name="shortcuts"/>
 
 ## Keyboard shortcuts
