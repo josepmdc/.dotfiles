@@ -13,7 +13,7 @@
 #### Desktop
 ![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/desktop.png?raw=true)
 
-#### ZSH with the inertia theme
+#### ZSH with the [inertia](https://github.com/josepmdc/inertia) theme
 ![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/shell.png?raw=true)
 
 <a name="setup"/>
