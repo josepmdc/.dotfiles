@@ -189,8 +189,11 @@ client.focused          #2b3136 #2b3136 #ffffff #d9d9d9 #00444d
 # Hide window borders and titlebars
 for_window [class="^.*"] border pixel 0
 
+# Handle muliple displays 
+exec_always --no-startup-id ~/.config/i3/display.sh
+
 # Launch Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Add gaps
 gaps inner 7
@@ -209,6 +212,9 @@ exec_always --no-startup-id flameshot
 # Swap Escape with Caps Lock
 exec_always --no-startup-id setxkbmap -option "caps:swapescape"
 
+# Turn on num lock at startup
+exec_always --no-startup-id numlockx on
+
 # Flameshot screenshot
 bindsym Print exec flameshot gui
 
@@ -217,9 +223,6 @@ bindsym Print exec flameshot gui
 bindsym Prior exec msi-perkeyrgb --model GS65 -s ffffff
 # off
 bindsym Next exec msi-perkeyrgb --model GS65 -d
-
-# Handle muliple displays
-# exec_always --no-startup-id ./display.sh
 
 # Lock screen and suspend
 bindsym $mod+l exec "i3lock && systemctl suspend"
