@@ -13,7 +13,7 @@
 #### Desktop
 ![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/desktop.png?raw=true)
 
-#### ZSH with the inertia theme
+#### ZSH with the [inertia](https://github.com/josepmdc/inertia) theme
 ![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/shell.png?raw=true)
 
 <a name="setup"/>
@@ -23,7 +23,7 @@
 #### 1. If you want to use this config
 Clone the repo in your HOME directory:
 ```bash
-git clone https://github.com/josepmdc/dotfiles.git
+git clone --bare https://github.com/josepmdc/dotfiles.git $HOME/.dotfiles
 ```
 
 Define an alias so you can manage your dotfiles from any directory (NOTE: Notice this writes an alias to the .zshrc file, change it if you are using another shell):
