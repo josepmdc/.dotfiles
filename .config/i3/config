@@ -56,6 +56,9 @@ bindsym $mod+Shift+q kill
 # launch rofi
 bindsym $mod+d exec --no-startup-id rofi -show combi
 
+# launch picom
+exec_always --no-startup-id picom
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -204,7 +207,7 @@ smart_gaps on
 border_radius 4 
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-center Pictures/Wallpapers/rocket.png
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot

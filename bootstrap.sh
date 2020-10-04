@@ -7,7 +7,7 @@ echo "Done!"
 echo "Installing pacman packages..."
   sudo pacman -S alacritty firefox chromium neovim code dmenu rofi docker \
                  flameshot i3lock hugo nodejs go rust python vlc git fzf \
-                 the_silver_searcher ranger zsh feh picom
+                 the_silver_searcher ranger zsh feh picom bat
 echo "Done!"
 
 echo "Installing yay..."
@@ -28,6 +28,10 @@ echo "Done!"
 echo "Installing inertia zsh theme..."
   git clone https://github.com/josepmdc/inertia.git $HOME/dev/inertia
   ln -s "$HOME/dev/inertia/inertia.zsh-theme" "$ZSH_CUSTOM/themes/inertia.zsh-theme"
+echo "Done!"
+
+echo "Installing exa..."
+  cargo install exa
 echo "Done!"
 
 echo "Installing i3..."

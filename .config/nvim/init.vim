@@ -36,6 +36,9 @@ call plug#begin()
 " Git
   Plug 'tpope/vim-fugitive'
 
+" Display buffers as tabs
+  Plug 'ap/vim-buftabline'
+
 call plug#end()
 
 " Turn on syntax highlighting
@@ -112,7 +115,10 @@ nnoremap <C-p> :Files<CR>
 
 " Search all files
 " sudo pacman -S the_silver_searcher fzf
-nnoremap <C-F> :Ag<CR>
+nnoremap <C-f> :Ag<CR>
+
+" FZF Buffers
+nnoremap <C-l> :Buffers<CR>
 
 " Allow hidden buffers
 set hidden
@@ -168,17 +174,6 @@ if exists('+termguicolors')
 endif
 
 colorscheme gruvbox-material 
-
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=7
@@ -356,6 +351,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-html',
   \ 'coc-css',
+  \ 'coc-clangd',
   \ ]
 
 " ----------------------------------------------------
@@ -381,3 +377,23 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+
+" Show filename with path relative to (git) project root
+function! LightlineFilename()
+  return expand('%')
+endfunction
+
+" Move through buffers
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>p :bprev<CR>
