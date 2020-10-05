@@ -115,7 +115,7 @@ nnoremap <C-p> :Files<CR>
 
 " Search all files
 " sudo pacman -S the_silver_searcher fzf
-nnoremap <C-f> :Ag<CR>
+nnoremap <C-f> :Rg<CR>
 
 " FZF Buffers
 nnoremap <C-l> :Buffers<CR>
