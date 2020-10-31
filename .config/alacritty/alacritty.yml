@@ -51,5 +51,5 @@ font:
 
 window:
   padding:
-    x: 15
-    y: 15
+    x: 10
+    y: 10
