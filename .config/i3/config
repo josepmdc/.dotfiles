@@ -217,12 +217,12 @@ exec_always --no-startup-id ~/.config/displays/single_display.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Add gaps
-gaps inner 7
+gaps inner 0
 smart_gaps on
 
 # Border radius is not supported by i3 gaps. To use it needs to be compiled
 # from a modified source
-border_radius 4 
+border_radius 0 
 
 # Set wallpaper on boot
 exec_always --no-startup-id feh --bg-center Pictures/Wallpapers/rocket.png

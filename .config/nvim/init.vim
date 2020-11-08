@@ -58,7 +58,7 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
-let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
 let g:go_debug_windows = {
       \ 'vars':       'rightbelow 60vnew',
       \ 'stack':      'rightbelow 10new',
@@ -266,6 +266,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
+" highlight CocHighlightText ctermfg=Red  guifg=#ff0000
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.

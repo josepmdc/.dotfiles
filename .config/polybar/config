@@ -166,7 +166,7 @@ menu-0-2-exec = systemctl reboot
 [module/pulseaudio]
 type = internal/pulseaudio
 sink = alsa_output.pci-0000_00_1f.3.analog-stereo
-format-volume = Volume <ramp-volume> <label-volume>
+format-volume = <ramp-volume> <label-volume>
 format-volume-padding = 2
 format-volume-underline = #ff6f69
 label-volume = %percentage%%
