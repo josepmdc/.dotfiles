@@ -70,16 +70,17 @@ label-padding = 2
 type = internal/battery
 battery = BAT1
 full-at = 100
-format-charging = Charging: <label-charging>
+format-charging = Battery <label-charging>
 format-charging-padding = 2
-format-discharging = Discharging <label-discharging>
 format-charging-underline = #3CAEA3
-format-discharging-underline = #ffe226
+
+format-discharging = Battery <label-discharging>
+format-discharging-underline = #3CAEA3
 format-discharging-padding = 2
-;format-full = %{T3}Battery <label-full>
-label-charging-font = 3
-label-discharging-font = 3
-label-full =  Charged
+
+format-full = Battery <label-full>
+format-full-padding = 2
+format-full-underline = #3CAEA3
 
 [module/backlight]
 type = internal/backlight
@@ -113,6 +114,7 @@ format-disconnected = <label-disconnected>
 format-disconnected-prefix = "✈ "
 label-disconnected = WiFi disconnected
 format-disconnected-padding = 2
+format-disconnected-underline = #58508D
 
 [module/eth1]
 type = internal/network
@@ -120,12 +122,16 @@ interface = enp60s0
 interval = 3.0
 
 format-connected-prefix = "eth: "
+format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected-padding = 2
 format-connected-underline = #BC5090
-format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
-format-disconnected =
+format-disconnected-padding = 2
+format-disconnected-underline = #BC5090
+format-disconnected-prefix = "eth: "
+format-disconnected-prefix-foreground = ${colors.foreground-alt}
+label-disconnected = disconnected
 
 [module/date]
 type = internal/date

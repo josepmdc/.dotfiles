@@ -2,6 +2,9 @@
 " Don't try to be vi compatible
 set nocompatible
 
+" Enable mouse support
+set mouse=a
+
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
@@ -9,10 +12,7 @@ filetype off
 call plug#begin()
 
 " Color themes
-  Plug 'franbach/miramare'
   Plug 'sainnhe/gruvbox-material'
-  Plug 'kristijanhusak/vim-hybrid-material'
-  Plug 'davidosomething/vim-colors-meh'
 
 " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -67,7 +67,7 @@ let g:go_debug_windows = {
 " For plugins to load correctly
 filetype plugin indent on
 
-let mapleader = ","
+let mapleader = " "
 
 " Security
 set modelines=0
@@ -398,3 +398,7 @@ endfunction
 " Move through buffers
 nnoremap <leader>n :bnext<CR>
 nnoremap <leader>p :bprev<CR>
+
+" Shift up/down to scroll
+map <S-Down> <C-E>
+map <S-Up> <C-Y>
