@@ -39,7 +39,7 @@ ZSH_THEME="inertia"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -115,4 +115,22 @@ alias la='exa -la'
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 
+# Enable vi mode
 bindkey -v
+
+# Accept autocomplete suggestion with CTRL + space
+bindkey '^ ' autosuggest-accept
+
+# Set title to current dir or program that's running {
+    function set-title-precmd() {
+      printf "\e]2;%s\a" "${PWD/#$HOME/~}"
+    }
+
+    function set-title-preexec() {
+      printf "\e]2;%s\a" "$1"
+    }
+    
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd set-title-precmd
+    add-zsh-hook preexec set-title-preexec
+# }

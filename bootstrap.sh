@@ -5,9 +5,9 @@ echo "Updating pacman packages and databases..."
 echo "Done!"
 
 echo "Installing pacman packages..."
-  sudo pacman -S alacritty firefox chromium neovim code dmenu rofi docker \
+  sudo pacman -S alacritty kitty firefox chromium neovim code dmenu rofi docker \
                  flameshot i3lock hugo nodejs go rust python vlc git fzf \
-                 ranger zsh feh picom bat ripgrep playerctl
+                 ranger zsh feh picom bat ripgrep playerctl exa i3 network-manager-applet
 echo "Done!"
 
 echo "Installing yay..."
@@ -28,34 +28,4 @@ echo "Done!"
 echo "Installing inertia zsh theme..."
   git clone https://github.com/josepmdc/inertia.git $HOME/dev/inertia
   ln -s "$HOME/dev/inertia/inertia.zsh-theme" "$ZSH_CUSTOM/themes/inertia.zsh-theme"
-echo "Done!"
-
-echo "Installing exa..."
-  cargo install exa
-echo "Done!"
-
-echo "Installing i3..."
-  read -p "Install with rounded corners support? (y/N): " confirm
-
-  case $confirm in
-    ([yY][eE][sS]|[yY])  
-      mkdir -p ~/dev && cd ~/dev/
-
-      git clone https://github.com/josepmdc/i3.git i3-gaps
-      cd i3-gaps
-
-      # compile & install
-      autoreconf --force --install
-      rm -rf build/
-      mkdir -p build && cd build/
-      
-      ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-      make && sudo make install
-      ;;
-
-    *)
-      sudo pacman -S i3
-      ;;
-  esac
-
 echo "Done!"

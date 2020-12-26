@@ -59,7 +59,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec WINIT_X11_SCALE_FACTOR=1.0 alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -215,6 +215,9 @@ exec_always --no-startup-id ~/.config/displays/single_display.sh
 
 # Launch Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Launch nm-applet
+exec_always --no-startup-id nm-applet
 
 # Add gaps
 gaps inner 0

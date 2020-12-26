@@ -7,8 +7,8 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/eDP1]
-monitor = ${env:MONITOR:eDP1}
+[bar/main]
+monitor = ${env:MONITOR:}
 width = 100%
 height = 2.5%
 radius = 6.0
@@ -21,51 +21,26 @@ foreground = ${colors.foreground}
 border-size = 0
 line-size = 2
 
-separator = " / "
+separator = %{F#fab52a}|%{F-}
 
-font-0 = "FiraCode Nerd Font Mono:style=Retina,Regular"
+font-0 = "FiraCode Nerd Font Mono:style=Retina,Regular:size=9"
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = wlan eth1 pulseaudio backlight battery cpu date
+modules-right = pulseaudio backlight battery cpu date 
 
 tray-position = right
 tray-padding = 2
 tray-maxsize = 24
-
-[bar/DP1]
-monitor = ${env:MONITOR:DP1}
-width = 100%
-height = 2.5%
-radius = 6.0
-fixed-center = false
-bottom = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-border-size = 0
-line-size = 2
-
-separator = %{F#fab52a} / %{F-}
-
-font-0 = "FiraCode Nerd Font Mono:style=Retina,Regular:size=10"
-
-modules-left = i3 xwindow
-modules-center =
-modules-right = wlan eth1 pulseaudio backlight battery cpu date 
-
-tray-position = right
-tray-padding = 2
-tray-maxsize = 24
+tray-underline = #363636
 
 [module/filler]
 type = custom/text
-content = "▽"
+content = " "
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:70:...%
+label = %title:0:40:...%
 label-padding = 2
 
 [module/battery]
@@ -225,14 +200,16 @@ ws-icon-9 = 10;IX
 ws-icon-default = ♟
 
 format = <label-state> <label-mode>
+format-padding = 2
 
 label-mode = %mode%
 label-mode-background = #e60053
+label-mode-padding = 1
 
 label-focused = %index%
 label-focused-foreground = #ffffff
-label-focused-underline = #fba922
-label-focused-padding = 2 
+label-focused-underline = #ff6f69
+label-focused-padding = 2
 
 label-unfocused = %index%
 label-unfocused-padding = 2
@@ -245,8 +222,7 @@ label-urgent-foreground = #ffffff
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
 
-label-separator = |
-label-separator-foreground = #ffb52a
-
+#label-separator = |
+#label-separator-foreground = #ffb52a
 
 
