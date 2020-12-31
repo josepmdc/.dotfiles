@@ -1,4 +1,3 @@
-
 " Don't try to be vi compatible
 set nocompatible
 
@@ -29,6 +28,8 @@ call plug#begin()
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
+  " LaTeX
+  Plug 'lervag/vimtex'
 
 " Toolbar
   Plug 'itchyny/lightline.vim'
@@ -38,6 +39,9 @@ call plug#begin()
 
 " Display buffers as tabs
   Plug 'ap/vim-buftabline'
+
+" Distraction free writing
+  Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -90,8 +94,8 @@ set linebreak
 set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=4
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set noshiftround
 
@@ -109,27 +113,13 @@ nnoremap k gk
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
-" Open files search
-" sudo pacman -S fzf
-nnoremap <C-p> :Files<CR>
-
-" Search all files
-" sudo pacman -S the_silver_searcher fzf
-nnoremap <C-f> :Rg<CR>
-
-" FZF Buffers
-nnoremap <C-l> :Buffers<CR>
-
 " Allow hidden buffers
 set hidden
-
 " Rendering
 set ttyfast
-
 " Status bar
 set laststatus=2
 
-" Last line
 set showmode
 set showcmd
 
@@ -180,7 +170,9 @@ highlight ColorColumn ctermbg=7
 
 set clipboard=unnamedplus
 
-" netrw customization
+" ================
+"   BEGIN: NETRW  
+" ================
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -188,11 +180,13 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 " Toogle netrw
 map <silent> <C-B> :Lexplore<CR>
+" ==============
+"   END: NETRW  
+" ==============
 
-
-" ----------------------------------------------------
-" Begin COC.NVIM
-" ----------------------------------------------------
+" ===================
+"   BEGIN: CON.NVIM  
+" ===================
 
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -348,20 +342,30 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ 'coc-go', 
+  \ 'coc-python', 
   \ 'coc-tsserver',
   \ 'coc-eslint',
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-clangd',
+  \ 'coc-vimtex',
   \ ]
 
-" ----------------------------------------------------
-" End COC.NVIM
-" ----------------------------------------------------
+" =================
+"   END: CON.NVIM  
+" =================
 
-" CTRL-s to save
-nmap <silent> <C-s> :w<CR>
-
+" ==============
+"   BEGIN: FZF  
+" ==============
+" Open files search
+" sudo pacman -S fzf
+nnoremap <C-p> :Files<CR>
+" Search all files
+" sudo pacman -S ripgrep
+nnoremap <C-f> :Rg<CR>
+" FZF Buffers
+nnoremap <C-l> :Buffers<CR>
 let g:fzf_layout = { 'window': { 'width' : 0.6, 'height' : 0.6 } }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -377,6 +381,12 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+" ============
+"   END: FZF  
+" ============
+
+" CTRL-s to save
+nmap <silent> <C-s> :w<CR>
 
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
@@ -402,3 +412,28 @@ nnoremap <leader>p :bprev<CR>
 " Shift up/down to scroll
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
+
+" =================================
+"   BEGIN: BufTabLine keybindings  
+" =================================
+
+" Display ordinal numbering on tabs
+let g:buftabline_numbers = 2
+" Display an indicator if the file has been modified
+let g:buftabline_indicators = 1
+
+" Go to buffer by ordinal number
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+
+" ===============================
+"   END: BufTabLine keybindings  
+" ===============================
