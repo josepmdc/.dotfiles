@@ -7,7 +7,8 @@ echo "Done!"
 echo "Installing pacman packages..."
   sudo pacman -S alacritty kitty firefox chromium neovim code dmenu rofi docker \
                  flameshot i3lock hugo nodejs go rust python vlc git fzf \
-                 ranger zsh feh picom bat ripgrep playerctl exa i3 network-manager-applet
+                 ranger zsh feh picom bat ripgrep playerctl exa i3 network-manager-applet \
+                 zathura zathura-pdf-mupdf texlive-most base-devel
 echo "Done!"
 
 echo "Installing yay..."
