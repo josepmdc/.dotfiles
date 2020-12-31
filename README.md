@@ -4,14 +4,13 @@
 1. [How to set up](#setup)  
 2. [Adding new files](#adding_files)  
 3. [Dependencies](#dependencies)
-4. [Keyboard shortcuts](#shortcuts)
 
 #### This dotfiles are based on Manjaro, but they will probably work on any Arch based distro, and most things on any distro.
 
 ## Screenshots
 
 #### Desktop
-![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/desktop.png?raw=true)
+![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/result.png?raw=true)
 
 #### ZSH with the [inertia](https://github.com/josepmdc/inertia) theme
 ![alt text](https://github.com/josepmdc/dotfiles/blob/master/screenshots/shell.png?raw=true)
@@ -75,7 +74,6 @@ To install dependencies run the bootstrap.sh script
 ```bash
 ./bootstrap.sh
 ```
-NOTE: To get the rounded borders you need to build and install from source from [this fork](https://github.com/josepmdc/i3), since it's not supported by i3 gaps
 
 ##### Desktop enviroment
 | Name | Description |
@@ -105,7 +103,7 @@ NOTE: To get the rounded borders you need to build and install from source from 
 ##### Terminal
 | Name | Description |
 |------|-------------|
-| alacritty | Simple and fast terminal emulator | 
+| Kitty | Fast terminal emulator | 
 
 ##### Shell
 | Name | Description |
@@ -133,6 +131,7 @@ NOTE: To get the rounded borders you need to build and install from source from 
 | go |
 | rust |
 | python |
+| C++ |
 
 ##### Source control
 | Name |
@@ -161,8 +160,3 @@ NOTE: To get the rounded borders you need to build and install from source from 
 |-------|------------|
 | Picom | lightweight compositor for X11 |
 
-<a name="shortcuts"/>
-
-## Keyboard shortcuts
-
-Coming soon
