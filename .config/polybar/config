@@ -1,7 +1,7 @@
 [colors]
-background = #111
+background = #282828
 background-alt = #444
-foreground = #dfdfdf
+foreground = #ebdbb2
 foreground-alt = #888
 primary = #ffb52a
 secondary = #e60053
@@ -23,11 +23,11 @@ line-size = 2
 
 separator = %{F#fab52a}|%{F-}
 
-font-0 = "FiraCode Nerd Font Mono:style=Retina,Regular:size=9"
+font-0 = "FiraCode Nerd Font Mono:style=Retina,Regular:size=9;2"
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = pulseaudio backlight battery cpu date 
+modules-right = cpu pulseaudio backlight battery date 
 
 tray-position = right
 tray-padding = 2
@@ -42,6 +42,7 @@ content = " "
 type = internal/xwindow
 label = %title:0:40:...%
 label-padding = 2
+label-foreground = ${colors.foreground}
 
 [module/battery]
 type = internal/battery
@@ -89,8 +90,7 @@ label = %percentage%%
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #20639B
+format-underline = #d3869b
 format = <label>
 format-padding = 1
 label = %percentage:2%%
@@ -133,7 +133,7 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-padding = 1
-format-underline = #363636
+format-underline = #076678
 
 label = %date% %time%
 
@@ -177,8 +177,8 @@ format-volume-underline = #ff6f69
 format-volume-padding = 1
 label-volume = %percentage%%
 label-muted = 婢 muted
-label-muted-underline = #ff6f69
-format-muted-padding = 1
+label-muted-underline = #fb4934
+label-muted-padding = 1
 
 ramp-volume-0 = 奔
 ramp-volume-1 = 墳
@@ -186,6 +186,7 @@ ramp-volume-1 = 墳
 [module/i3]
 type = internal/i3
 pin-workspaces = true
+enable-scroll = false
 
 ws-icon-0 = 1;I
 ws-icon-1 = 2;II
@@ -200,15 +201,15 @@ ws-icon-9 = 10;IX
 ws-icon-default = ♟
 
 format = <label-state> <label-mode>
-format-padding = 2
+format-padding = 0
 
 label-mode = %mode%
-label-mode-background = #e60053
-label-mode-padding = 1
+label-mode-background = ${colors.background}
+label-mode-padding = 2
 
 label-focused = %index%
-label-focused-foreground = #ffffff
-label-focused-underline = #ff6f69
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.foreground}
 label-focused-padding = 2
 
 label-unfocused = %index%
@@ -218,8 +219,9 @@ label-visible = %index%
 label-visible-padding = 2
 
 label-urgent = %index%
-label-urgent-foreground = #ffffff
-label-urgent-background = #bd2c40
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = #fb4934
+
 label-urgent-padding = 2
 
 #label-separator = |
