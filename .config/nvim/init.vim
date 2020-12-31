@@ -185,7 +185,7 @@ map <silent> <C-B> :Lexplore<CR>
 " ==============
 
 " ===================
-"   BEGIN: CON.NVIM  
+"   BEGIN: COC.NVIM  
 " ===================
 
 " Some servers have issues with backup files, see #649.
@@ -352,7 +352,7 @@ let g:coc_global_extensions = [
   \ ]
 
 " =================
-"   END: CON.NVIM  
+"   END: COC.NVIM  
 " =================
 
 " ==============
