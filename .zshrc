@@ -110,6 +110,7 @@ alias ffnt='fn(){ firefox -new-tab $1};fn'
 alias vi='nvim'
 alias ls='exa'
 alias la='exa -la'
+alias zathura='zathura --fork'
 
 # Declare the variable
 typeset -A ZSH_HIGHLIGHT_STYLES
