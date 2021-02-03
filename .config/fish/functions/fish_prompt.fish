@@ -21,32 +21,31 @@ set __fish_git_prompt_color_upstream_ahead green
 set __fish_git_prompt_color_upstream_behind magenta
 
 # Icons
-set __fish_git_prompt_char_cleanstate ''
-set __fish_git_prompt_char_conflictedstate '⚠'
-set __fish_git_prompt_char_dirtystate ''
+set __fish_git_prompt_char_cleanstate '   '
+set __fish_git_prompt_char_conflictedstate '  ✖ '
+set __fish_git_prompt_char_dirtystate '   '
 set __fish_git_prompt_char_invalidstate ''
-set __fish_git_prompt_char_stagedstate '→'
-set __fish_git_prompt_char_stateseparator ' '
-set __fish_git_prompt_char_untrackedfiles '☡'
-set __fish_git_prompt_char_upstream_ahead '⇡'
-set __fish_git_prompt_char_upstream_behind '⇣'
-set __fish_git_prompt_char_upstream_diverged '⇡⇣'
-set __fish_git_prompt_char_upstream_equal '' 
+set __fish_git_prompt_char_stagedstate '  → '
+set __fish_git_prompt_char_stateseparator ''
+set __fish_git_prompt_char_untrackedfiles '  ● '
+set __fish_git_prompt_char_upstream_ahead '  ⇡ '
+set __fish_git_prompt_char_upstream_behind '  ⇣ '
+set __fish_git_prompt_char_upstream_diverged '  ⇡⇣ '
 
 set -U fish_prompt_pwd_dir_length 0
 
 function fish_prompt
+    echo
     set last_status $status
 
-    set_color magenta
-    printf '» %s' (set_color white & prompt_pwd)
+    set_color white
+    printf '%s' (prompt_pwd)
 
     set_color normal
-    printf '%s ' (__fish_git_prompt)
-  
-    echo
+    printf '%s \n' (__fish_git_prompt "  %s")
 
     set_color green
     echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
     set_color normal
+    echo
 end
