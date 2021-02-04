@@ -9,6 +9,7 @@ alert = #bd2c40
 
 [bar/main]
 monitor = ${env:MONITOR:}
+enable-ipc = true
 width = 100%
 height = 2.5%
 radius = 6.0
@@ -27,7 +28,7 @@ font-0 = "FiraCode Nerd Font Mono:style=Retina,Regular:size=9;2"
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = cpu pulseaudio backlight battery date 
+modules-right = now_playing cpu pulseaudio backlight battery date 
 
 tray-position = right
 tray-padding = 2
@@ -227,4 +228,32 @@ label-urgent-padding = 2
 #label-separator = |
 #label-separator-foreground = #ffb52a
 
+[module/now_playing]
+type = custom/script
+tail = true
+format = <label>
+format-padding = 1
+exec = zscroll -l 30 --scroll-padding "    " --match-command "$HOME/.config/polybar/now_playing.sh" --update-check true "$HOME/.config/polybar/now_playing.sh" & wait
+click-left = polybar-msg -p %pid% cmd toggle.now_playing
 
+[module/prev]
+type = custom/script
+exec = echo "玲"
+format = <label>
+format-padding = 2
+click-left = playerctl previous spotify
+
+[module/play-pause]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo ""
+initial = 1
+format-padding = 2
+click-left = playerctl play-pause spotify
+
+[module/next]
+type = custom/script
+exec = echo "怜"
+format = <label>
+format-padding = 2
+click-left = playerctl next spotify

@@ -38,14 +38,13 @@ function fish_prompt
     echo
     set last_status $status
 
-    set_color white
-    printf '%s' (prompt_pwd)
+    set_color magenta
+    printf '» %s' (set_color white & prompt_pwd)
 
     set_color normal
     printf '%s \n' (__fish_git_prompt "  %s")
 
-    set_color green
-    echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
+    echo -n (set_color green)'λ '
     set_color normal
     echo
 end

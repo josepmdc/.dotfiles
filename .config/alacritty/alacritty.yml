@@ -1,4 +1,3 @@
-# Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
@@ -47,9 +46,13 @@ font:
 
     offset:
       x: 0
-      y: 4
+      y: 2
 
 window:
   padding:
     x: 10
-    y: 10
+    y: 4
+
+key_bindings:
+  # Super + Shift + Enter will open a new instance in the working directory
+  - { key: Return, mods: Super|Shift, action: SpawnNewInstance  }

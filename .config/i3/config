@@ -204,15 +204,15 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 #}
 
-client.unfocused            #0d1010 #212121 #ebdbb2 #424242 #282828                                                                            
-client.focused              #2b3136 #2b3136 #ebdbb2 #d9d9d9 #4a4747
-client.focused_inactive     #2b3136 #2b3136 #ebdbb2 #d9d9d9 #282828
+client.unfocused            #0d1010 #212121 #ebdbb2 #424242 #4a4747
+client.focused              #2b3136 #2b3136 #ebdbb2 #d9d9d9 #ffb300
+client.focused_inactive     #2b3136 #2b3136 #ebdbb2 #d9d9d9 #4a4747
 
 # Don't show borders if theres only one window
 hide_edge_borders smart
 
 # Hide window borders and titlebars
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 
 # Handle muliple displays 
 exec_always --no-startup-id ~/.config/displays/single_display.sh
@@ -224,7 +224,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet
 
 # Add gaps
-gaps inner 0
+gaps inner 8
 smart_gaps on
 
 # Border radius is not supported by i3 gaps. To use it needs to be compiled
@@ -232,7 +232,7 @@ smart_gaps on
 border_radius 0 
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-fill Pictures/Wallpapers/gruvbox_linux.png
+exec_always --no-startup-id feh --bg-fill Pictures/Wallpapers/gruvbox_linux2.png
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
@@ -248,7 +248,7 @@ bindsym Print exec flameshot gui
 
 # keyboard backlight:
 #on
-bindsym Prior exec msi-perkeyrgb --model GS65 -s ffffff
+bindsym Prior exec msi-perkeyrgb --model GS65 -s ffb300
 # off
 bindsym Next exec msi-perkeyrgb --model GS65 -d
 
@@ -257,3 +257,5 @@ bindsym $mod+l exec "i3lock && systemctl suspend"
 
 for_window [title="Microsoft Teams Notification"] floating enable
 
+# Make a window follow you to every workspace
+bindsym $mod+y sticky toggle

@@ -1,0 +1,44 @@
+history: 0
+font:
+        normal: { family: FiraCode }
+        size: 11.0
+        use_thin_strokes: true
+
+        
+colors:
+  # Default colors
+  primary:
+    background: '0x252930'
+    foreground: '0xD8DEE9'
+
+  # Normal colors
+  normal:
+    black:   '0x3B4252'
+    red:     '0x0088ff'
+    green:   '0x26ffba'
+    yellow:  '0xffcc00'
+    blue:    '0x00a6ff'
+    magenta: '0xB48EAD'
+    cyan:    '0x88C0D0'
+    white:   '0xE5E9F0'
+
+  # Bright colors
+  bright:
+    black:   '0x4C566A'
+    red:     '0xBF616A'
+    green:   '0xA3BE8C'
+    yellow:  '0xEBCB8B'
+    blue:    '0x009dff'
+    magenta: '0xB48EAD'
+    cyan:    '0x8FBCBB'
+    white:   '0xECEFF4'
+
+key_bindings:
+    -
+        key: V
+        mods: Alt
+        action: Paste
+    -
+        key: C
+        mods: Alt
+        action: Copy

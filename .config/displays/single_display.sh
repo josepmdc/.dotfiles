@@ -1,9 +1,8 @@
 #!/bin/bash
 
-laptop=eDP1
-thundervolt=DP1
-hdmi=HDMI1
-virtual=VIRTUAL1
+laptop=eDP-1
+thundervolt=DP-1
+hdmi=HDMI-1
 
 if xrandr | grep "$thundervolt disconnected"; then
   xrandr --output "$thundervolt" --off --output "$laptop" --auto

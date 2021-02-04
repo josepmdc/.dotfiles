@@ -124,6 +124,16 @@ To install dependencies run the bootstrap.sh script
 | neovim | Terminal text editor |
 | code oss | Open source VSCode |
 
+##### PDF Reader
+| Name |
+|------|
+| Zathura |
+
+##### Task manager
+| Name |
+|------|
+| bottom |
+
 ##### Programming languages
 | Name |
 |------|
