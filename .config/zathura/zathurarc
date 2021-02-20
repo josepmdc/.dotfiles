@@ -1,0 +1,10 @@
+set default-bg "#282828"
+set inputbar-bg "#282828"
+set statusbar-bg "#282828"
+set recolor-lightcolor "#282829"
+set recolor-darkcolor "#ebdbb2"
+set completion-highlight-bg "#ebdbb2"
+
+map i recolor
+map <Left> navigate previous
+map <Right> navigate next
