@@ -21,10 +21,9 @@ set __fish_git_prompt_color_upstream_ahead green
 set __fish_git_prompt_color_upstream_behind magenta
 
 # Icons
-set __fish_git_prompt_char_cleanstate '   '
+set __fish_git_prompt_char_cleanstate ''
 set __fish_git_prompt_char_conflictedstate '  ✖ '
-set __fish_git_prompt_char_dirtystate '   '
-set __fish_git_prompt_char_invalidstate ''
+set __fish_git_prompt_char_dirtystate '  ● '
 set __fish_git_prompt_char_stagedstate '  → '
 set __fish_git_prompt_char_stateseparator ''
 set __fish_git_prompt_char_untrackedfiles '  ● '
@@ -42,9 +41,9 @@ function fish_prompt
     printf '» %s' (set_color white & prompt_pwd)
 
     set_color normal
-    printf '%s \n' (__fish_git_prompt "  %s")
+    printf '%s \n' (set_color magenta & __fish_git_prompt "  %s")
 
-    echo -n (set_color green)'λ '
+    echo -n (set_color cyan)'λ '
     set_color normal
     echo
 end
