@@ -33,12 +33,20 @@ set __fish_git_prompt_char_upstream_diverged '  ⇡⇣ '
 
 set -U fish_prompt_pwd_dir_length 0
 
+# Don't display venv so we can display it later at a custom location
+set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
+
 function fish_prompt
     echo
-    set last_status $status
 
     set_color magenta
-    printf '» %s' (set_color white & prompt_pwd)
+    printf '» %s ' (set_color white & prompt_pwd)
+
+    # python virtual environment
+    if set -q VIRTUAL_ENV
+        set_color -o blue
+        printf '(%s)' (basename "$VIRTUAL_ENV")
+    end
 
     set_color normal
     printf '%s \n' (set_color magenta & __fish_git_prompt "  %s")
@@ -46,4 +54,9 @@ function fish_prompt
     echo -n (set_color cyan)'λ '
     set_color normal
     echo
+end
+
+function fish_right_prompt
+    # vi mode prompt
+    fish_default_mode_prompt
 end
