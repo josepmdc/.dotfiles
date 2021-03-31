@@ -1,0 +1,5 @@
+EDITOR=nvim
+
+TZ=Europe/Madrid
+
+BAT_THEME="Nord"
