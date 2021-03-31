@@ -8,6 +8,9 @@ if status is-login
     end
 end
 
+# autocomplete with ctrl+space in vi insert mode
+bind -M insert -k nul forward-char
+
 alias dotfiles='/usr/bin/git --git-dir=/home/josepm/.dotfiles/ --work-tree=/home/josepm'
 alias vi='nvim'
 alias ls='exa'
