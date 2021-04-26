@@ -56,3 +56,6 @@ window:
 key_bindings:
   # Super + Shift + Enter will open a new instance in the working directory
   - { key: Return, mods: Super|Shift, action: SpawnNewInstance  }
+
+env:
+  WINIT_X11_SCALE_FACTOR: "1.0"
