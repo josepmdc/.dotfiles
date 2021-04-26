@@ -1,11 +1,11 @@
 [colors]
 background = #282828
-background-alt = #444
 foreground = #ebdbb2
-foreground-alt = #888
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+blue = #076678
+green = #3CAEA3
+yellow = #ffb300
+red = #fb4934
+magenta = #d3869b
 
 [bar/main]
 monitor = ${env:MONITOR:}
@@ -50,15 +50,15 @@ type = internal/battery
 battery = BAT1
 full-at = 95
 format-charging =  <label-charging>
-format-charging-underline = #3CAEA3
+format-charging-underline = ${colors.green}
 format-charging-padding = 1
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = #3CAEA3
+format-discharging-underline = ${colors.green}
 format-discharging-padding = 1
 
 format-full =  <label-full>
-format-full-underline = #3CAEA3
+format-full-underline = ${colors.green}
 format-full-padding = 1
 
 ramp-capacity-0 = 
@@ -82,16 +82,17 @@ animation-charging-6 = 
 
 [module/backlight]
 type = internal/backlight
-card = acpi_video0
+card = intel_backlight
+enable-scroll = true
 format =  <label>
-format-underline = #ffb300
+format-underline = ${colors.yellow}
 format-padding = 1
 label = %percentage%%
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-underline = #d3869b
+format-underline = ${colors.magenta}
 format = <label>
 format-padding = 1
 label = %percentage:2%%
@@ -134,7 +135,7 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-padding = 1
-format-underline = #076678
+format-underline = ${colors.blue}
 
 label = %date% %time%
 
@@ -178,7 +179,7 @@ format-volume-underline = #ff6f69
 format-volume-padding = 1
 label-volume = %percentage%%
 label-muted = 婢 muted
-label-muted-underline = #fb4934
+label-muted-underline = ${colors.red}
 label-muted-padding = 1
 
 ramp-volume-0 = 奔
@@ -221,7 +222,7 @@ label-visible-padding = 2
 
 label-urgent = %index%
 label-urgent-foreground = ${colors.foreground}
-label-urgent-background = #fb4934
+label-urgent-background = ${colors.red}
 
 label-urgent-padding = 2
 
