@@ -55,11 +55,15 @@ exec --no-startup-id nm-applet
 
 # }
 
+# BEGIN Backlight controls {
+
+# }
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -71,17 +75,14 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# launch rofi
-bindsym $mod+d exec --no-startup-id rofi -show combi
-
 # launch picom
 exec_always --no-startup-id picom
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-#bindsym $mod+l focus up
-bindsym $mod+ntilde focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -102,7 +103,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -111,7 +112,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -224,24 +225,22 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet
 
 # Add gaps
-gaps inner 8
-smart_gaps on
+# gaps inner 8
+# smart_gaps on
 
-# Border radius is not supported by i3 gaps. To use it needs to be compiled
-# from a modified source
-border_radius 0 
+# Keyboard Stuff {{{
+exec_always --no-startup-id setxkbmap es
+# Swap Escape with Caps Lock
+exec_always --no-startup-id setxkbmap -option "caps:swapescape"
+# Turn on num lock at startup
+exec_always --no-startup-id numlockx on
+# }}}
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-fill Pictures/Wallpapers/gruvbox_linux2.png
+exec_always --no-startup-id feh --bg-fill Pictures/Wallpapers/wallpaper.jpg
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
-
-# Swap Escape with Caps Lock
-exec_always --no-startup-id setxkbmap -option "caps:swapescape"
-
-# Turn on num lock at startup
-exec_always --no-startup-id numlockx on
 
 # Flameshot screenshot
 bindsym Print exec flameshot gui
@@ -253,9 +252,14 @@ bindsym Prior exec msi-perkeyrgb --model GS65 -s ffb300
 bindsym Next exec msi-perkeyrgb --model GS65 -d
 
 # Lock screen and suspend
-bindsym $mod+l exec "i3lock && systemctl suspend"
+bindsym $mod+s exec "i3lock -i ~/Pictures/Wallpapers/wallpaper.png && systemctl suspend"
 
 for_window [title="Microsoft Teams Notification"] floating enable
 
 # Make a window follow you to every workspace
 bindsym $mod+y sticky toggle
+
+# launch rofi
+# bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+d exec rofi -show combi
+
