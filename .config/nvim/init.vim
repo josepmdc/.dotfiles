@@ -11,37 +11,34 @@ filetype off
 call plug#begin()
 
 " Color themes
-  Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/gruvbox-material'
 
 " fzf
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Language support
-  Plug 'sheerun/vim-polyglot'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " Go
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  " SQL
-  Plug 'vim-scripts/dbext.vim'
-  " JS/TypeScript/React
-  Plug 'pangloss/vim-javascript'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
-  " LaTeX
-  Plug 'lervag/vimtex'
-
-" Toolbar
-  Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" SQL
+Plug 'vim-scripts/dbext.vim'
+" JS/TypeScript/React
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" LaTeX
+Plug 'lervag/vimtex'
 
 " Git
-  Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Display buffers as tabs
-  Plug 'ap/vim-buftabline'
+Plug 'ap/vim-buftabline'
 
 " Distraction free writing
-  Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -64,9 +61,9 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 " let g:go_auto_sameids = 1
 let g:go_debug_windows = {
-      \ 'vars':       'rightbelow 60vnew',
-      \ 'stack':      'rightbelow 10new',
-\ }
+            \ 'vars':       'rightbelow 60vnew',
+            \ 'stack':      'rightbelow 10new',
+            \ }
 
 " For plugins to load correctly
 filetype plugin indent on
@@ -88,16 +85,16 @@ set visualbell
 " Encoding
 set encoding=utf-8
 
+set foldmethod=syntax
+" don't fold when opening a file
+set foldlevel=99
+
 " Whitespace
 set nowrap
 set linebreak
 set textwidth=79
 set formatoptions=tcqrn1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set noshiftround
+set tabstop=4 shiftwidth=4 expandtab
 
 " Cursor motion
 set scrolloff=3
@@ -115,6 +112,13 @@ nnoremap k gk
 " Insert new line and stay in normal mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
+"
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace selected text yanking it
+vnoremap <leader>p "_dP
 
 " Shift up/down to scroll
 map <S-Down> <C-E>
@@ -128,13 +132,13 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 map <leader><space> :let @/=''<cr> " clear search
 
 " Formatting
-map <leader>q gqip
+nmap <leader>f gg=G''
 
 " Toogle netrw
 map <silent> <C-B> :Lexplore<CR>
 
-" CTRL-s to save
-nmap <silent> <C-s> :w<CR>
+" save
+nmap <silent> <leader>w :up<CR>
 
 " == FZF ==
 " Open files search
@@ -176,9 +180,9 @@ let g:solarized_termtrans=1
 " ~/.vim/colors 
 
 if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
 endif
 
 colorscheme gruvbox-material 
@@ -207,14 +211,19 @@ set updatetime=300
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " GoTo code navigation.
@@ -229,29 +238,25 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ 'coc-go', 
-  \ 'coc-python', 
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-html',
-  \ 'coc-css',
-  \ 'coc-clangd',
-  \ 'coc-vimtex',
-  \ ]
+            \ 'coc-snippets',
+            \ 'coc-pairs',
+            \ 'coc-prettier', 
+            \ 'coc-json', 
+            \ 'coc-go', 
+            \ 'coc-python', 
+            \ 'coc-tsserver',
+            \ 'coc-eslint',
+            \ 'coc-html',
+            \ 'coc-css',
+            \ 'coc-clangd',
+            \ 'coc-vimtex',
+            \ ]
 
 " =================
 "   END: COC.NVIM  
@@ -262,45 +267,22 @@ let g:coc_global_extensions = [
 " ==============
 let g:fzf_layout = { 'window': { 'width' : 0.6, 'height' : 0.6 } }
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 " ============
 "   END: FZF  
 " ============
-
-" ====================
-"   BEGIN: lightline  
-" ====================
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \   'filename': 'LightlineFilename',
-      \ },
-      \ }
-
-" Show filename with path relative to (git) project root
-function! LightlineFilename()
-  return expand('%')
-endfunction
-" ==================
-"   END: lightline  
-" ==================
 
 " =================================
 "   BEGIN: BufTabLine keybindings  
