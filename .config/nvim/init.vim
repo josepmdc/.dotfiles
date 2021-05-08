@@ -314,17 +314,18 @@ nmap <leader>0 <Plug>BufTabLine.Go(10)
 "   BEGIN: Statusline
 " =====================
 function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    let l:branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    let b:gitbranch = strlen(l:branch) > 0 ? '  '.l:branch.' ' : ''
 endfunction
 
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
+augroup GetGitBranch
+    autocmd!
+    autocmd VimEnter,WinEnter,BufEnter * call GitBranch()
+augroup END
 
 set statusline=
 set statusline+=%#PmenuSel#         " change background color to light
-set statusline+=%{StatuslineGit()}  " git info
+set statusline+=%{b:gitbranch}      " git info
 set statusline+=%#LineNr#           " change background color back to dark
 set statusline+=\ %f                " file name
 set statusline+=%=                  " display everithing on the right after this
