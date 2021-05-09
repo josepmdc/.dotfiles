@@ -5,7 +5,7 @@
 2. [Adding new files](#adding_files)  
 3. [Dependencies](#dependencies)
 
-#### This dotfiles are based on Manjaro, but they will probably work on any Arch based distro, and most things on any distro.
+#### This dotfiles are based on Arch, but they will probably work on any Arch based distro, and most things on any distro.
 
 ## Screenshots
 
@@ -74,99 +74,3 @@ To install dependencies run the bootstrap.sh script
 ```bash
 ./bootstrap.sh
 ```
-
-##### Desktop enviroment
-| Name | Description |
-|------|-------------|
-| i3   | Window manager |
-| polybar | Status bar  |
-| i3lock | Screen locker |
-| feh | For setting the wallpaper |
-
-##### Application launchers
-| Name | Description |
-|------|-------------|
-| dmenu | Small application launcher  | 
-| rofi  | window switcher, application launcher and dmenu replacement |
-
-##### File explorers
-| Name | Description |
-|------|-------------|
-| ranger | TUI file explorer |
-| nautilus| GUI file explorer |
-
-##### Screenshots
-| Name | Description |
-|------|-------------|
-| flameshot | Powerful screenshot software |
-
-##### Terminal
-| Name | Description |
-|------|-------------|
-| Kitty | Fast terminal emulator | 
-
-##### Shell
-| Name | Description |
-|------|-------------|
-| zsh  |  shell |
-| oh my zsh! | zsh framework |
-| inertia | my custom zsh theme |
-
-##### Browsers
-| Name |
-|------|
-| Firefox |
-| Chromium |
-
-##### Editors
-| Name | Description |
-|------|-------------|
-| neovim | Terminal text editor |
-| code oss | Open source VSCode |
-
-##### PDF Reader
-| Name |
-|------|
-| Zathura |
-
-##### Task manager
-| Name |
-|------|
-| bottom |
-
-##### Programming languages
-| Name |
-|------|
-| nodejs |
-| go |
-| rust |
-| python |
-| C++ |
-
-##### Source control
-| Name |
-|------|
-| git | 
-
-##### Miscellaneous development tools
-| Name | Description |
-|------|-------------|
-| docker | Containers |
-| hugo | Static site generator |
-
-##### Media player
-| Name |
-|------|
-| vlc |
-
-##### Fuzzy finders
-| Name | Description |
-|------|-------------|
-| fzf | file fuzzy finder, I mostly used it in vim |
-| the_silver_searcher | Code searching tool, also, I use it mostly in vim |
-
-#### Compositor
-| Name | Description |
-|-------|------------|
-| Picom | lightweight compositor for X11 |
-
