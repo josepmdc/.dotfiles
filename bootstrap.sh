@@ -5,10 +5,10 @@ echo "Updating pacman packages and databases..."
 echo "Done!"
 
 echo "Installing pacman packages..."
-  sudo pacman -S alacritty kitty firefox chromium neovim code dmenu rofi docker \
+  sudo pacman -S alacritty kitty firefox chromium neovim code dmenu rofi \
                  flameshot i3lock hugo nodejs go rust python vlc git fzf \
-                 ranger zsh feh picom bat ripgrep playerctl exa i3 network-manager-applet \
-                 zathura zathura-pdf-mupdf texlive-most base-devel polybar fish
+                 vifm zsh feh picom bat ripgrep playerctl exa i3 network-manager-applet \
+                 zathura zathura-pdf-mupdf texlive-most base-devel polybar fish \
                  xclip noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-fira-code
 echo "Done!"
 
