@@ -40,6 +40,9 @@ Plug 'ap/vim-buftabline'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
 
+" Floating terminal
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
 " Turn on syntax highlighting
@@ -340,3 +343,15 @@ set statusline+=\ %l:%c             " line:column
 " ===================
 "   END: Statusline
 " ===================
+
+" ===================
+"   BEGIN: floaterm
+" ===================
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
+let g:floaterm_borderchars = '─│─│╭╮╯╰'
+hi FloatermBorder guifg=orange
+" =================
+"   END: floaterm
+" =================
