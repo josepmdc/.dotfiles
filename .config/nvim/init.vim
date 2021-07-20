@@ -188,7 +188,7 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-colorscheme gruvbox-material 
+colorscheme gruvbox-material
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=7
@@ -252,7 +252,7 @@ let g:coc_global_extensions = [
             \ 'coc-prettier', 
             \ 'coc-json', 
             \ 'coc-go', 
-            \ 'coc-python', 
+            \ 'coc-pyright', 
             \ 'coc-tsserver',
             \ 'coc-eslint',
             \ 'coc-html',
