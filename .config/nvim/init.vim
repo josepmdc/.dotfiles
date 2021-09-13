@@ -12,6 +12,9 @@ call plug#begin()
 " Color themes
 Plug 'sainnhe/gruvbox-material'
 Plug 'Th3Whit3Wolf/one-nvim'
+Plug 'habamax/vim-gruvbit'
+Plug 'projekt0n/github-nvim-theme'
+Plug 'chriskempson/base16-vim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 " Autocomplete
@@ -22,8 +25,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Multi language support
-Plug 'sheerun/vim-polyglot'
+" Flutter
+Plug 'akinsho/flutter-tools.nvim'
 " LaTeX
 Plug 'lervag/vimtex'
 " Git
@@ -33,17 +36,43 @@ Plug 'ap/vim-buftabline'
 " Floating terminal
 Plug 'voldikss/vim-floaterm'
 " Diagnostics
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 " Zen mode
 Plug 'folke/zen-mode.nvim'
+" auto-pairs
+Plug 'windwp/nvim-autopairs'
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+" Icons
+Plug 'kyazdani42/nvim-web-devicons'
+" Colorize lsp
+Plug 'folke/lsp-colors.nvim'
 call plug#end()
 " END: plugins
 
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+" ~/.vim/colors 
+
+set termguicolors
+colorscheme base16-tomorrow-night
+
+" Show popup with lsp diagnostics on cursor hold
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false, border = "single"})
+" This is so the pop up shows up faster
+set updatetime=500
+
 " BEGIN: imports
-lua require("autocomplete")
-lua require("treesitter")
-lua require("lsp")
+lua << EOF
+require("autocomplete")
+require("treesitter")
+require("lsp")
+require('telescope').load_extension("flutter")
+require('nvim-autopairs').setup()
+EOF
 " END: imports
 
 " Turn on syntax highlighting
@@ -112,25 +141,22 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 map <leader><space> :let @/=''<cr> " clear search
 
 " Formatting
-nmap <leader>f gg=G''
+" nmap <leader>f gg=G''
 
 " save
 nmap <silent> <leader>w :up<CR>
 
 " == Telescope ==
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <F5> <cmd>Telescope flutter commands<cr>
 
 " == Autocomplete ==
 inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
@@ -145,13 +171,11 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 " Trouble
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap <leader>t <cmd>TroubleToggle<cr>
+nnoremap <leader>d <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>qf <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>ll <cmd>TroubleToggle loclist<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
-
 " END: remaps  
 
 " Allow hidden buffers
@@ -172,17 +196,6 @@ set showmatch
 
 " Formatting
 set smartindent
-
-" Color scheme (terminal)
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" ~/.vim/colors 
-
-set termguicolors
-
-colorscheme one-nvim
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=7
@@ -209,7 +222,6 @@ nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 
 " END: BufTabLine keybindings  
-
 
 " BEGIN: Statusline
 function! GitBranch()
