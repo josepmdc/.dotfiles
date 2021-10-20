@@ -1,83 +1,19 @@
-" vim: filetype=vifm :
-" Sample configuration file for vifm (last updated: 9 September, 2020)
-" You can edit this file by hand.
-" The " character at the beginning of a line comments out the line.
-" Blank lines are ignored.
-" The basic format for each item is shown with an example.
-
-" ------------------------------------------------------------------------------
-
-" Command used to edit files in various contexts.  The default is vim.
-" If you would like to use another vi clone such as Elvis or Vile
-" you will need to change this setting.
+filetype * xdg-open %f %i
 
 set vicmd=vim
-" set vicmd=elvis\ -G\ termcap
-" set vicmd=vile
-
-" This makes vifm perform file operations on its own instead of relying on
-" standard utilities like `cp`.  While using `cp` and alike is a more universal
-" solution, it's also much slower when processing large amounts of files and
-" doesn't support progress measuring.
-
 set syscalls
 
-" Trash Directory
-" The default is to move files that are deleted with dd or :d to
-" the trash directory.  If you change this you will not be able to move
-" files by deleting them and then using p to put the file in the new location.
-" I recommend not changing this until you are familiar with vifm.
-" This probably shouldn't be an option.
-
 set trash
-
-" This is how many directories to store in the directory history.
-
 set history=100
 
-" Automatically resolve symbolic links on l or Enter.
-
 set nofollowlinks
-
-" With this option turned on you can run partially entered commands with
-" unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
-
-" set fastrun
-
-" Natural sort of (version) numbers within text.
-
 set sortnumbers
-
-" Maximum number of changes that can be undone.
-
 set undolevels=100
-
-" Use Vim's format of help file (has highlighting and "hyperlinks").
-" If you would rather use a plain text help file set novimhelp.
-
 set vimhelp
-
-" If you would like to run an executable file when you
-" press Enter, l or Right Arrow, set this.
-
 set norunexec
-
-" List of color schemes to try (picks the first one supported by the terminal)
-
 colorscheme gruvbox
-
-" Format for displaying time in file list. For example:
-" TIME_STAMP_FORMAT=%m/%d-%H:%M
-" See man date or man strftime for details.
-
 set timefmt=%m/%d\ %H:%M
-
-" Show list of matches on tab completion in command-line mode
-
 set wildmenu
-
-" Display completions in a form of popup with descriptions of the matches
-
 set wildstyle=popup
 
 " Display suggestions in normal, visual and view modes for keys, marks and

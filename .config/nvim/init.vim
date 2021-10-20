@@ -9,14 +9,10 @@ filetype off
 
 " BEGIN: plugins
 call plug#begin()
-" Color themes
-Plug 'sainnhe/gruvbox-material'
-Plug 'Th3Whit3Wolf/one-nvim'
-Plug 'habamax/vim-gruvbit'
-Plug 'projekt0n/github-nvim-theme'
-Plug 'chriskempson/base16-vim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
+" Color themes
+Plug 'habamax/vim-gruvbit'
 " Autocomplete
 Plug 'hrsh7th/nvim-compe'
 " Treesitter
@@ -58,7 +54,7 @@ let g:solarized_termtrans=1
 " ~/.vim/colors 
 
 set termguicolors
-colorscheme base16-tomorrow-night
+colorscheme gruvbit
 
 " Show popup with lsp diagnostics on cursor hold
 " autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false, border = "single"})
@@ -151,7 +147,6 @@ nmap <silent> <leader>w :up<CR>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <F5> <cmd>Telescope flutter commands<cr>
 
 " == Autocomplete ==

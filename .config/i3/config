@@ -64,7 +64,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -238,13 +238,16 @@ exec_always --no-startup-id numlockx on
 # }}}
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-fill Pictures/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-max Pictures/Wallpapers/minimalist.jpg
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
 
 # Flameshot screenshot
 bindsym Print exec flameshot gui
+
+# Launch ActivityWatch on boot
+exec_always --no-startup-id aw-qt
 
 # keyboard backlight:
 #on
@@ -264,3 +267,4 @@ bindsym $mod+y sticky toggle
 # bindsym $mod+d exec i3-dmenu-desktop
 bindsym $mod+d exec rofi -show combi
 
+assign [class="OpenGL"] $ws3

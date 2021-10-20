@@ -51,7 +51,7 @@ function fish_prompt
     set_color normal
     printf '%s \n' (set_color magenta & __fish_git_prompt "  %s")
 
-    echo -n (set_color cyan)'λ '
+    echo -n (set_color green)'λ '
     set_color normal
     echo
 end

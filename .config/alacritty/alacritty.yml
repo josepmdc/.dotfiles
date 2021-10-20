@@ -1,47 +1,17 @@
-colors:
-  # Default colors
-  primary:
-    # hard contrast: background = '0x1d2021'
-    background: '0x282828'
-    # soft contrast: background = '0x32302f'
-    foreground: '0xebdbb2'
-
-  # Normal colors
-  normal:
-    black:   '0x1c1b19'
-    red:     '0xe84a43'
-    green:   '0x5aba59'
-    yellow:  '0xfbb829'
-    blue:    '0x2c78bf'
-    magenta: '0xb16286'
-    cyan:    '0x0aaeb3'
-    white:   '0xd0bfa1'
-
-  # Bright colors
-  bright:
-    black:   '0x918175'
-    red:     '0xf75341'
-    green:   '0x98bc37'
-    yellow:  '0xfed06e'
-    blue:    '0x68a8e4'
-    magenta: '0xff5c8f'
-    cyan:    '0x53fde9'
-    white:   '0xfce8c3'
-
 font:
     size: 10.0
     use_thin_strokes: true
     
     normal: 
-      family: FiraCode
+      family: "FiraCode Nerd Font Mono"
       style: Regular
 
     bold: 
-      family: FiraCode
+      family: "FiraCode Nerd Font Mono" 
       style: Bold
 
     italic: 
-      family: Fira Code
+      family: "FiraCode Nerd Font Mono" 
       style: Italic
 
     offset:
@@ -50,8 +20,8 @@ font:
 
 window:
   padding:
-    x: 10
-    y: 4
+    x: 5
+    y: 0
 
 key_bindings:
   # Super + Shift + Enter will open a new instance in the working directory
@@ -59,3 +29,65 @@ key_bindings:
 
 env:
   WINIT_X11_SCALE_FACTOR: "1.0"
+
+schemes:
+  default: &default
+    # Default colors
+    primary:
+      # hard contrast: background = '0x1d2021'
+      background: '0x282828'
+      # soft contrast: background = '0x32302f'
+      foreground: '0xebdbb2'
+
+    # Normal colors
+    normal:
+      black:   '0x1c1b19'
+      red:     '0xe84a43'
+      green:   '0x5aba59'
+      yellow:  '0xfbb829'
+      blue:    '0x2c78bf'
+      magenta: '0xb16286'
+      cyan:    '0x0aaeb3'
+      white:   '0xd0bfa1'
+
+    # Bright colors
+    bright:
+      black:   '0x918175'
+      red:     '0xf75341'
+      green:   '0x98bc37'
+      yellow:  '0xfed06e'
+      blue:    '0x68a8e4'
+      magenta: '0xff5c8f'
+      cyan:    '0x53fde9'
+      white:   '0xfce8c3'
+
+  tokyo-night: &tokyo-night
+    # Default colors
+    primary:
+      background: '0x1a1b26'
+      foreground: '0xa9b1d6'
+
+    # Normal colors
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x787c99'
+
+    # Bright colors
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+colors: *default
+
