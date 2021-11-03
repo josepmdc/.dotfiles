@@ -83,7 +83,7 @@ exec_always --no-startup-id picom
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus right
+# bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -238,7 +238,7 @@ exec_always --no-startup-id numlockx on
 # }}}
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-max Pictures/Wallpapers/minimalist.jpg
+exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper.png
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
@@ -249,6 +249,9 @@ bindsym Print exec flameshot gui
 # Launch ActivityWatch on boot
 exec_always --no-startup-id aw-qt
 
+# enable night light
+exec_always --no-startup-id redshift -P -O 3000
+
 # keyboard backlight:
 #on
 bindsym Prior exec msi-perkeyrgb --model GS65 -s ffb300
@@ -256,7 +259,7 @@ bindsym Prior exec msi-perkeyrgb --model GS65 -s ffb300
 bindsym Next exec msi-perkeyrgb --model GS65 -d
 
 # Lock screen and suspend
-bindsym $mod+s exec "i3lock -i ~/Pictures/Wallpapers/wallpaper.png && systemctl suspend"
+bindsym $mod+l exec "i3lock -i ~/Pictures/Wallpapers/wallpaper.png && systemctl suspend"
 
 for_window [title="Microsoft Teams Notification"] floating enable
 
