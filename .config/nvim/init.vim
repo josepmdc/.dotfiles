@@ -14,7 +14,13 @@ Plug 'neovim/nvim-lspconfig'
 " Color themes
 Plug 'habamax/vim-gruvbit'
 " Autocomplete
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Telescope
@@ -129,15 +135,10 @@ vnoremap <leader>p "_dP
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
 
-" Searching
-nnoremap / /\v
-vnoremap / /\v
 " search selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-map <leader><space> :let @/=''<cr> " clear search
-
-" Formatting
-" nmap <leader>f gg=G''
+" clear search
+map <leader><space> :noh<CR>
 
 " save
 nmap <silent> <leader>w :up<CR>
@@ -149,25 +150,8 @@ nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope buffers<cr>
 nnoremap <F5> <cmd>Telescope flutter commands<cr>
 
-" == Autocomplete ==
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
-
-" Trouble
+" == Trouble ==
 nnoremap <leader>t <cmd>TroubleToggle<cr>
-nnoremap <leader>d <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <leader>qf <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>ll <cmd>TroubleToggle loclist<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
