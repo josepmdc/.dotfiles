@@ -46,6 +46,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 " Bufferline
 Plug 'akinsho/bufferline.nvim'
+" File tree
+Plug 'kyazdani42/nvim-tree.lua'
 " Colorize lsp
 Plug 'folke/lsp-colors.nvim'
 call plug#end()
@@ -70,6 +72,7 @@ require("autocomplete")
 require("treesitter")
 require("lsp")
 require('nvim-autopairs').setup()
+require'nvim-tree'.setup()
 require('bufferline').setup { 
     options = {
         diagnostics = "nvim_lsp", 
@@ -83,6 +86,13 @@ require('bufferline').setup {
     }
 }
 
+local colors = {
+  yellow   = '#ECBE7B',
+  green    = '#98be65',
+  red      = '#ec5f67',
+  darkblue = '#081633',
+}
+
 require('lualine').setup {
   options = {
     theme = 'horizon',
@@ -93,16 +103,25 @@ require('lualine').setup {
     lualine_a = {
       { 'branch', separator = { left = '', right = '' } },
     },
-    lualine_b = {'diff', 'filename'},
+    lualine_b = { 
+        {
+        'diff',
+            diff_color = {
+                added = { fg = colors.green },
+                modified = { fg = colors.yellow },
+                removed = { fg = colors.red },
+            },
+        },
+        'filename'},
     lualine_c = {
         {
         'diagnostics',
             sources = { 'nvim_lsp' },
             symbols = { error = ' ', warn = ' ', info = ' ' },
             diagnostics_color = {
-              color_error = { fg = '#ec5f67' },
-              color_warn = { fg = '#ECBE7B' },
-              color_info = { fg = '#008080' },
+              color_error = { fg = colors.red },
+              color_warn = { fg = colors.yellow },
+              color_info = { fg = colors.darkblue },
             },
         }
     },
@@ -208,6 +227,8 @@ nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 nnoremap <silent><Tab> :BufferLineCycleNext<CR>
 nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
 
+" == File tree ==
+nnoremap <C-b> :NvimTreeToggle<CR>
 " END: remaps  
 
 " Allow hidden buffers
