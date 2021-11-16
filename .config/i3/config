@@ -229,14 +229,6 @@ exec_always --no-startup-id nm-applet
 # gaps inner 8
 # smart_gaps on
 
-# Keyboard Stuff {{{
-exec_always --no-startup-id setxkbmap es
-# Swap Escape with Caps Lock
-exec_always --no-startup-id setxkbmap -option "caps:swapescape"
-# Turn on num lock at startup
-exec_always --no-startup-id numlockx on
-# }}}
-
 # Set wallpaper on boot
 exec_always --no-startup-id feh --bg-scale Pictures/Wallpapers/wallpaper.png
 
@@ -245,9 +237,6 @@ exec_always --no-startup-id flameshot
 
 # Flameshot screenshot
 bindsym Print exec flameshot gui
-
-# Launch ActivityWatch on boot
-exec_always --no-startup-id aw-qt
 
 # enable night light
 exec_always --no-startup-id redshift -P -O 3000

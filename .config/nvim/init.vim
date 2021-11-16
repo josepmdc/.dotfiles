@@ -17,7 +17,6 @@ Plug 'habamax/vim-gruvbit'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
@@ -27,14 +26,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Flutter
-Plug 'akinsho/flutter-tools.nvim'
 " LaTeX
 Plug 'lervag/vimtex'
 " Git
 Plug 'tpope/vim-fugitive'
-" Display buffers as tabs
-Plug 'ap/vim-buftabline'
 " Floating terminal
 Plug 'voldikss/vim-floaterm'
 " Diagnostics
@@ -47,6 +42,10 @@ Plug 'windwp/nvim-autopairs'
 Plug 'hrsh7th/vim-vsnip'
 " Icons
 Plug 'kyazdani42/nvim-web-devicons'
+" Statusline
+Plug 'nvim-lualine/lualine.nvim'
+" Bufferline
+Plug 'akinsho/bufferline.nvim'
 " Colorize lsp
 Plug 'folke/lsp-colors.nvim'
 call plug#end()
@@ -62,20 +61,58 @@ let g:solarized_termtrans=1
 set termguicolors
 colorscheme gruvbit
 
-" Show popup with lsp diagnostics on cursor hold
-" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false, border = "single"})
 " This is so the pop up shows up faster
 set updatetime=500
 
-" BEGIN: imports
+" BEGIN: Lua
 lua << EOF
 require("autocomplete")
 require("treesitter")
 require("lsp")
-require('telescope').load_extension("flutter")
 require('nvim-autopairs').setup()
+require('bufferline').setup { 
+    options = {
+        diagnostics = "nvim_lsp", 
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          local icon = level:match("error") and " " or " "
+          return " " .. icon .. count
+        end,
+        numbers = function(opts)
+            return string.format('%s', opts.ordinal)
+        end,
+    }
+}
+
+require('lualine').setup {
+  options = {
+    theme = 'horizon',
+    component_separators = '|',
+    section_separators = { left = '', right = '' },
+  },
+  sections = {
+    lualine_a = {
+      { 'branch', separator = { left = '', right = '' } },
+    },
+    lualine_b = {'diff', 'filename'},
+    lualine_c = {
+        {
+        'diagnostics',
+            sources = { 'nvim_lsp' },
+            symbols = { error = ' ', warn = ' ', info = ' ' },
+            diagnostics_color = {
+              color_error = { fg = '#ec5f67' },
+              color_warn = { fg = '#ECBE7B' },
+              color_info = { fg = '#008080' },
+            },
+        }
+    },
+    lualine_z = {
+      { 'location', separator = { right = '' }, left_padding = 2 },
+    },
+  },
+}
 EOF
-" END: imports
+" END: Lua
 
 " Turn on syntax highlighting
 syntax on
@@ -148,13 +185,29 @@ nmap <silent> <leader>w :up<CR>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope buffers<cr>
-nnoremap <F5> <cmd>Telescope flutter commands<cr>
 
 " == Trouble ==
-nnoremap <leader>t <cmd>TroubleToggle<cr>
+nnoremap <leader>t <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 nnoremap <leader>qf <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>ll <cmd>TroubleToggle loclist<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
+
+" == Open URL in browser ==
+nmap <silent> gx :!open <cWORD><cr>
+
+" == Change buffer ==
+nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <silent><leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+nnoremap <silent><leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
+nnoremap <silent><leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
+nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
+nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
+nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
+nnoremap <silent><Tab> :BufferLineCycleNext<CR>
+nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
+
 " END: remaps  
 
 " Allow hidden buffers
@@ -180,54 +233,6 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=7
 
 set clipboard=unnamedplus
-
-" BEGIN: BufTabLine keybindings  
-
-" Display ordinal numbering on tabs
-let g:buftabline_numbers = 2
-" Display an indicator if the file has been modified
-let g:buftabline_indicators = 1
-
-" Go to buffer by ordinal number
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
-
-" END: BufTabLine keybindings  
-
-" BEGIN: Statusline
-function! GitBranch()
-    let l:branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-    let b:gitbranch = strlen(l:branch) > 0 ? '  '.l:branch.' ' : ''
-endfunction
-
-augroup GetGitBranch
-    autocmd!
-    autocmd VimEnter,WinEnter,BufEnter * call GitBranch()
-augroup END
-
-set statusline=
-set statusline+=%#PmenuSel#         " change background color to light
-set statusline+=%{b:gitbranch}      " git info
-set statusline+=%#LineNr#           " change background color back to dark
-set statusline+=\ %f                " file name
-set statusline+=%=                  " display everithing on the right after this
-set statusline+=%{&filetype}
-set statusline+=\ \|                " separator
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ \|                " separator
-set statusline+=\ %{&fileformat}
-set statusline+=\ \|                " separator
-set statusline+=\ %p%%              " scroll percentage
-set statusline+=\ %l:%c             " line:column
-" END: Statusline
 
 " BEGIN: floaterm
 let g:floaterm_keymap_toggle = '<F1>'
