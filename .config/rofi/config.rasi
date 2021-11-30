@@ -1,0 +1,8 @@
+configuration {
+	modi: "combi";
+	font: "Fira Code 12";
+	show-icons: true;
+	combi-modi: "drun,run,ssh,window";
+	display-drun: "";
+}
+@theme "theme.rasi"
