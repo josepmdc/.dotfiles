@@ -75,7 +75,7 @@ require('nvim-autopairs').setup()
 require'nvim-tree'.setup()
 require('bufferline').setup { 
     options = {
-        diagnostics = "nvim_lsp", 
+        diagnostics = "nvim_diagnostic", 
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local icon = level:match("error") and " " or " "
           return " " .. icon .. count
@@ -83,6 +83,7 @@ require('bufferline').setup {
         numbers = function(opts)
             return string.format('%s', opts.ordinal)
         end,
+        show_buffer_icons = false,
     }
 }
 
@@ -116,7 +117,7 @@ require('lualine').setup {
     lualine_c = {
         {
         'diagnostics',
-            sources = { 'nvim_lsp' },
+            sources = { 'nvim_diagnostic' },
             symbols = { error = ' ', warn = ' ', info = ' ' },
             diagnostics_color = {
               color_error = { fg = colors.red },
@@ -194,7 +195,7 @@ map <S-Up> <C-Y>
 " search selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " clear search
-map <leader><space> :noh<CR>
+map <silent> <leader><space> :noh<CR>
 
 " save
 nmap <silent> <leader>w :up<CR>

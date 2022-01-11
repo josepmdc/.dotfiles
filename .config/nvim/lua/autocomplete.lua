@@ -22,7 +22,7 @@ cmp.setup({
         ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
     },
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
+        { name = 'nvim_diagnostic' },
         { name = 'vsnip' },
     }, {
         { name = 'buffer' },
