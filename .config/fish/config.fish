@@ -17,6 +17,8 @@ alias ls='exa'
 alias la='exa -la'
 alias zathura='zathura --fork'
 alias ssh='TERM=xterm-256color command ssh'
+alias vig='nvim -c G'
+alias cal='cal -m'
 
 function timer
   sleep $argv &&
