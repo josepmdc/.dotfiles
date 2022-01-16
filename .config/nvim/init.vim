@@ -207,7 +207,7 @@ nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope buffers<cr>
 
 " == Trouble ==
-nnoremap <leader>t <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>t <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <leader>qf <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>ll <cmd>TroubleToggle loclist<cr>
 nnoremap gr <cmd>TroubleToggle lsp_references<cr>
