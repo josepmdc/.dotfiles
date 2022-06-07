@@ -1,5 +1,7 @@
 EDITOR=nvim
 
+TERMINAL=kitty
+
 TZ=Europe/Madrid
 
 BAT_THEME="Nord"
