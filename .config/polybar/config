@@ -94,7 +94,7 @@ interval = 2
 format-underline = ${colors.magenta}
 format = <label>
 format-padding = 1
-label = %percentage:2%%
+label =  %percentage:2%%
 
 [module/wlan]
 type = internal/network
