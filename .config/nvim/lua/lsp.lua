@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 
 vim.api.nvim_command(
-    "autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope='line'})"
+    "autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope='cursor', focusable=false})"
 )
 
 -- Automatically update diagnostics
