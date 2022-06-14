@@ -74,7 +74,8 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+c exec --no-startup-id dmenu_run
 
 # launch picom
 exec_always --no-startup-id picom
@@ -251,12 +252,13 @@ bindsym Next exec msi-perkeyrgb --model GS65 -d
 bindsym $mod+l exec "i3lock -i ~/Pictures/Wallpapers/wallpaper.png && systemctl suspend"
 
 for_window [title="Microsoft Teams Notification"] floating enable
+for_window [title="Android Emulator"] floating enable
 
 # Make a window follow you to every workspace
 bindsym $mod+y sticky toggle
 
 # launch rofi
 # bindsym $mod+d exec i3-dmenu-desktop
-bindsym $mod+d exec rofi -show combi
+# bindsym $mod+d exec rofi -show combi
 
 assign [class="OpenGL"] $ws3
