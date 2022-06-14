@@ -1,5 +1,7 @@
 filetype * xdg-open %f %i
 
+set relativenumber number
+
 set vicmd=vim
 set syscalls
 
