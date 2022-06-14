@@ -10,3 +10,6 @@ else
   xrandr --output "$thundervolt" --auto --output "$laptop" --primary \
   --right-of "$thundervolt" --auto
 fi
+
+sleep 1
+nohup ~/.config/polybar/launch.sh &
