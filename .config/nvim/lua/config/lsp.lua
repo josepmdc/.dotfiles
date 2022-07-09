@@ -41,7 +41,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
-local servers = { "gopls", "pyright", "clangd", "rust_analyzer" }
+local servers = {
+    "gopls", "pyright", "clangd", "rust_analyzer", "sumneko_lua"
+}
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {

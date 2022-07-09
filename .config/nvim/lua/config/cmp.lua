@@ -3,7 +3,7 @@ local cmp = require'cmp'
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     mapping = {
@@ -21,12 +21,12 @@ cmp.setup({
         ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
         ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
     },
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'vsnip' },
-    }, {
-        { name = 'buffer' },
-    }),
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "buffer" },
+        { name = "luasnip" },
+    },
     completion = {
         completeopt = 'menu,menuone,noinsert',
     },
