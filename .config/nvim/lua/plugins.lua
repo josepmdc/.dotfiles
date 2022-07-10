@@ -3,7 +3,7 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 -- expects the name of the config file
 local function get_config(name)
-  return string.format('require("config/%s")', name)
+    return string.format('require("config/%s")', name)
 end
 
 -- bootstrap packer if not installed
@@ -94,16 +94,16 @@ return require('packer').startup(function()
     })
 
     -- File tree
-    use({ 
-        "kyazdani42/nvim-tree.lua", 
-        config = function() require'nvim-tree'.setup() end
+    use({
+        "kyazdani42/nvim-tree.lua",
+        config = function() require 'nvim-tree'.setup() end
     })
 
     -- Go
-    use({ 
-        "ray-x/go.nvim", 
-        -- config = get_config("go"), 
-        ft = { "go" } 
+    use({
+        "ray-x/go.nvim",
+        ft = { "go" },
+        config = function() require 'go'.setup() end
     })
 
     -- Automatically set up configuration after cloning packer.nvim
