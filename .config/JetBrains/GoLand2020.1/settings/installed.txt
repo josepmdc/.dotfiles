@@ -1,2 +1,0 @@
-color.scheme.One Monokai
-net.vektah.codeglance
