@@ -11,6 +11,7 @@ opt.smartcase = true
 opt.autoindent = true
 opt.smartindent = true
 opt.mouse = "a"
+opt.updatetime = 500
 
 opt.termguicolors = true
 vim.cmd "colorscheme gruvbit"
@@ -18,6 +19,7 @@ vim.cmd "colorscheme gruvbit"
 wo.colorcolumn = "80"
 wo.number = true
 wo.relativenumber = true
+wo.wrap = false
 
 -- Limit line width on markdown files
 vim.api.nvim_create_autocmd(
