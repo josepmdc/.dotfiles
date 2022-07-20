@@ -3,12 +3,12 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 -- expects the name of the config file
 local function get_config(name)
-    return string.format('require("config/%s")', name)
+    return string.format('require("config.%s")', name)
 end
 
 -- bootstrap packer if not installed
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({
+    Packer_bootstrap = fn.system({
         "git",
         "clone",
         "https://github.com/wbthomason/packer.nvim",
@@ -19,10 +19,13 @@ end
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
-    use({
-        'neovim/nvim-lspconfig',
-        config = get_config('lsp')
-    })
+    use {
+        "williamboman/nvim-lsp-installer",
+        {
+            'neovim/nvim-lspconfig',
+            config = get_config('lsp')
+        }
+    }
 
     -- Color Theme
     use 'habamax/vim-gruvbit'
@@ -99,15 +102,19 @@ return require('packer').startup(function()
         config = function() require 'nvim-tree'.setup() end
     })
 
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+
     -- Go
     use({
         "ray-x/go.nvim",
         ft = { "go" },
-        config = function() require 'go'.setup() end
+        config = function() require 'go'.setup() end,
+        requires = { 'ray-x/guihua.lua' }
     })
 
     -- Automatically set up configuration after cloning packer.nvim
-    if packer_bootstrap then
+    if Packer_bootstrap then
         require('packer').sync()
     end
 end)
