@@ -16,6 +16,8 @@ opt.updatetime = 500
 opt.termguicolors = true
 vim.cmd "colorscheme gruvbit"
 
+vim.notify = require("notify")
+
 wo.colorcolumn = "80"
 wo.number = true
 wo.relativenumber = true

@@ -61,3 +61,6 @@ map({ "n", "v" }, "<leader>d", '"_d', silent)
 
 -- replace selected text yanking it
 map("v", "<leader>p", '"_dP', silent)
+
+-- Toggle lsp_lines
+map("n", "<leader>e", require("lsp_lines").toggle, silent)

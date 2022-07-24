@@ -102,6 +102,7 @@ return require('packer').startup(function()
         config = function() require 'nvim-tree'.setup() end
     })
 
+    -- Debugger
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
 
@@ -111,6 +112,20 @@ return require('packer').startup(function()
         ft = { "go" },
         config = function() require 'go'.setup() end,
         requires = { 'ray-x/guihua.lua' }
+    })
+
+    use({
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+    })
+
+    use({
+        'rcarriga/nvim-notify',
+        config = function()
+            require("notify").setup()
+        end
     })
 
     -- Automatically set up configuration after cloning packer.nvim

@@ -1,31 +1,11 @@
 local lspconfig = require('lspconfig')
 
-vim.api.nvim_command(
-    "autocmd CursorHold * lua vim.diagnostic.open_float(0, {scope='cursor', focusable=false})"
-)
-
--- Automatically update diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        virtual_text = false, -- { spacing = 4, prefix = "●" },
-        severity_sort = true,
-    })
-
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = "ⓘ " }
-for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-    --Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
     local opts = { noremap=true, silent=true }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
