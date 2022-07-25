@@ -68,8 +68,6 @@ return require('packer').startup(function()
     use 'lervag/vimtex'
     -- Git
     use 'tpope/vim-fugitive'
-    -- Floating terminal
-    use 'voldikss/vim-floaterm'
     -- Diagnostics
     use 'folke/trouble.nvim'
     -- Zen mode
