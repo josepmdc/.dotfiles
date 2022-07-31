@@ -33,9 +33,7 @@ map("n", "<C-l>", ":Telescope buffers<CR>", silent)
 
 -- == Trouble ==
 map("n", "<leader>t", ":TroubleToggle workspace_diagnostics<CR>", silent)
-map("n", "<leader>qf", ":TroubleToggle quickfix<CR>", silent)
-map("n", "<leader>ll", ":TroubleToggle loclist<CR>", silent)
-map("n", "gr", ":TroubleToggle lsp_references<CR>", silent)
+map("n", "<leader>r", ":TroubleToggle lsp_references<CR>", silent)
 
 -- == Open URL in browser ==
 map("n", "gx", ":!open <cWORD><CR>", silent)
@@ -64,3 +62,6 @@ map("v", "<leader>p", '"_dP', silent)
 
 -- Toggle lsp_lines
 map("n", "<leader>e", require("lsp_lines").toggle, silent)
+
+-- ESC to exit terminal mode
+map("t", "<Esc>", "<C-\\><C-n>")

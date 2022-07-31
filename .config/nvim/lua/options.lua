@@ -23,6 +23,36 @@ wo.number = true
 wo.relativenumber = true
 wo.wrap = false
 
+-- Floating window background color
+vim.highlight.create("NormalFloat", { guibg = "None", guifg = "None" }, false)
+
+-- Disable lsp_lines plugin by default
+vim.diagnostic.config({ virtual_lines = false })
+
+-- Open diagnostics Floating window on cursor hold
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        local opts = {
+            focusable = false,
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = {
+                { "╭", "LspFloatWinBorder" },
+                { "─", "LspFloatWinBorder" },
+                { "╮", "LspFloatWinBorder" },
+                { "│", "LspFloatWinBorder" },
+                { "╯", "LspFloatWinBorder" },
+                { "─", "LspFloatWinBorder" },
+                { "╰", "LspFloatWinBorder" },
+                { "│", "LspFloatWinBorder" },
+            },
+            source = 'always',
+            prefix = ' ',
+            scope = 'cursor',
+        }
+        vim.diagnostic.open_float(nil, opts)
+    end
+})
+
 -- Limit line width on markdown files
 vim.api.nvim_create_autocmd(
     { "BufRead", "BufNewFile" },
