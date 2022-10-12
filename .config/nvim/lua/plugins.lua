@@ -100,10 +100,6 @@ return require('packer').startup(function()
         config = function() require 'nvim-tree'.setup() end
     })
 
-    -- Debugger
-    use 'mfussenegger/nvim-dap'
-    use 'rcarriga/nvim-dap-ui'
-
     -- Go
     use({
         "ray-x/go.nvim",
