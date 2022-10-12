@@ -23,9 +23,6 @@ wo.number = true
 wo.relativenumber = true
 wo.wrap = false
 
--- Floating window background color
-vim.highlight.create("NormalFloat", { guibg = "None", guifg = "None" }, false)
-
 -- Disable lsp_lines plugin by default
 vim.diagnostic.config({ virtual_lines = false })
 
@@ -35,16 +32,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
         local opts = {
             focusable = false,
             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            border = {
-                { "╭", "LspFloatWinBorder" },
-                { "─", "LspFloatWinBorder" },
-                { "╮", "LspFloatWinBorder" },
-                { "│", "LspFloatWinBorder" },
-                { "╯", "LspFloatWinBorder" },
-                { "─", "LspFloatWinBorder" },
-                { "╰", "LspFloatWinBorder" },
-                { "│", "LspFloatWinBorder" },
-            },
             source = 'always',
             prefix = ' ',
             scope = 'cursor',
