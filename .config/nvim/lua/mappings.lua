@@ -32,8 +32,8 @@ map("n", "<C-f>", ":Telescope live_grep<CR>", silent)
 map("n", "<C-l>", ":Telescope buffers<CR>", silent)
 
 -- == Trouble ==
-map("n", "<leader>t", ":TroubleToggle workspace_diagnostics<CR>", silent)
-map("n", "<leader>r", ":TroubleToggle lsp_references<CR>", silent)
+map("n", "<leader>tt", ":TroubleToggle workspace_diagnostics<CR>", silent)
+map("n", "<leader>tr", ":TroubleToggle lsp_references<CR>", silent)
 
 -- == Open URL in browser ==
 map("n", "gx", ":!open <cWORD><CR>", silent)
