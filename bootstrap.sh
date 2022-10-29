@@ -8,7 +8,8 @@ echo "Installing pacman packages..."
 sudo pacman -S \
     kitty firefox neovim dmenu flameshot i3lock  nodejs go rustup python vlc git \
     nautilus vifm feh picom bat ripgrep playerctl exa i3 network-manager-applet \
-    zathura zathura-pdf-mupdf texlive-most base-devel polybar fish xclip ttf-fira-code
+    zathura zathura-pdf-mupdf texlive-most base-devel polybar fish xclip ttf-fira-code \
+    noto-fonts-cjk noto-fonts-emoji noto-fonts
 echo "Done!"
 
 echo "Installing yay..."
