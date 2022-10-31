@@ -56,8 +56,8 @@ exec --no-startup-id nm-applet
 # }
 
 # BEGIN Backlight controls {
-    bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-    bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+    bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+    bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 # }
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -231,7 +231,7 @@ exec_always --no-startup-id nm-applet
 # smart_gaps on
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-scale pictures/Wallpapers/wallpaper.png
+exec_always --no-startup-id feh --bg-scale pictures/wallpapers/wallpaper.jpg
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
@@ -240,7 +240,7 @@ exec_always --no-startup-id flameshot
 bindsym Print exec flameshot gui
 
 # enable night light
-exec_always --no-startup-id redshift -P -O 3000
+# exec_always --no-startup-id redshift -P -O 3000
 
 # keyboard backlight:
 #on
@@ -249,7 +249,7 @@ bindsym Prior exec msi-perkeyrgb --model GS65 -s ffb300
 bindsym Next exec msi-perkeyrgb --model GS65 -d
 
 # Lock screen and suspend
-bindsym $mod+l exec "i3lock -i ~/pictures/Wallpapers/wallpaper.png && systemctl suspend"
+bindsym $mod+l exec "i3lock -i ~/pictures/wallpapers/wallpaper.png"
 
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [title="Android Emulator"] floating enable
@@ -257,8 +257,5 @@ for_window [title="Android Emulator"] floating enable
 # Make a window follow you to every workspace
 bindsym $mod+y sticky toggle
 
-# launch rofi
-# bindsym $mod+d exec i3-dmenu-desktop
-# bindsym $mod+d exec rofi -show combi
-
-assign [class="OpenGL"] $ws3
+# Open browser
+bindsym $mod+b exec firefox

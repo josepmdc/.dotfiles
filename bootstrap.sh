@@ -9,7 +9,7 @@ sudo pacman -S \
     kitty firefox neovim dmenu flameshot i3lock  nodejs go rustup python vlc git \
     nautilus vifm feh picom bat ripgrep playerctl exa i3 network-manager-applet \
     zathura zathura-pdf-mupdf texlive-most base-devel polybar fish xclip ttf-fira-code \
-    noto-fonts-cjk noto-fonts-emoji noto-fonts
+    noto-fonts-cjk noto-fonts-emoji noto-fonts light
 echo "Done!"
 
 echo "Installing yay..."
@@ -22,4 +22,8 @@ echo "Done!"
 
 echo "Setting keyboard layout"
 localectl set-x11-keymap es, 105, qwerty caps:swapescape
+echo "Done!"
+
+echo "Adding user to video group (required to run light without sudo)"
+sudo usermod -a -G video $USER
 echo "Done!"
