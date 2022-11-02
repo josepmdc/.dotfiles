@@ -7,4 +7,5 @@ return {
     "html",
     "tsserver",
     "phpactor",
+    "jdtls",
 }
