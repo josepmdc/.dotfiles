@@ -43,5 +43,5 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- Limit line width on markdown files
 vim.api.nvim_create_autocmd(
     { "BufRead", "BufNewFile" },
-    { pattern = "*.md", command = "set textwidth=79" }
+    { pattern = { "*.md", "*.tex" }, command = "set textwidth=80" }
 )
