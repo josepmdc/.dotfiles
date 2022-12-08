@@ -19,12 +19,14 @@ end
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
+    -- lsp servers and config
     use {
-        "williamboman/nvim-lsp-installer",
-        {
-            'neovim/nvim-lspconfig',
-            config = get_config('lsp')
-        }
+        "williamboman/mason.nvim",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "williamboman/mason-lspconfig.nvim",
+        },
+        config = get_config('lsp'),
     }
 
     -- Color Theme

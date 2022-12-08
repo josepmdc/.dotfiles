@@ -6,7 +6,6 @@ return {
     "sumneko_lua",
     "html",
     "tsserver",
-    "phpactor",
     "jdtls",
     "ltex",
 }
