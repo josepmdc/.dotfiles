@@ -24,7 +24,11 @@ require('lualine').setup({
                     removed = { fg = colors.red },
                 },
             },
-            'filename' },
+            {
+                'filename',
+                path = 1,
+            }
+        },
         lualine_c = {
             {
                 'diagnostics',
