@@ -31,6 +31,7 @@ return require('packer').startup(function()
 
     -- Color Theme
     use 'habamax/vim-gruvbit'
+    use 'rebelot/kanagawa.nvim'
 
     -- Snippets
     use({ "rafamadriz/friendly-snippets" })
