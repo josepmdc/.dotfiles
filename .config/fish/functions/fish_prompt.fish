@@ -1,7 +1,10 @@
 # Options
-set -g __fish_git_prompt_show_informative_status
-set -g __fish_git_prompt_showcolorhints
+set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_showcolorhints 1
 set -g __fish_git_prompt_showupstream "informative"
+set -g __fish_git_prompt_showuntrackedfiles 1
+set -g __fish_git_prompt_showdirtystate 1
+set -g __fish_git_prompt_showstashstate 1
 
 # Colors
 set green (set_color green)
@@ -19,6 +22,7 @@ set -g __fish_git_prompt_color_merging yellow
 set -g __fish_git_prompt_color_stagedstate yellow
 set -g __fish_git_prompt_color_upstream_ahead green
 set -g __fish_git_prompt_color_upstream_behind magenta
+set -g __fish_git_prompt_color_stashstate green
 
 # Icons
 set -g __fish_git_prompt_char_cleanstate ''
@@ -30,6 +34,7 @@ set -g __fish_git_prompt_char_untrackedfiles '  ● '
 set -g __fish_git_prompt_char_upstream_ahead '  ⇡ '
 set -g __fish_git_prompt_char_upstream_behind '  ⇣ '
 set -g __fish_git_prompt_char_upstream_diverged '  ⇡⇣ '
+set -g __fish_git_prompt_char_stashstate '  𝌆 '
 
 set -U fish_prompt_pwd_dir_length 0
 
