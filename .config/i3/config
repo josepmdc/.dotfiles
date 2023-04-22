@@ -234,7 +234,7 @@ exec_always --no-startup-id nm-applet
 # smart_gaps on
 
 # Set wallpaper on boot
-exec_always --no-startup-id feh --bg-scale pictures/wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale Pictures/wallpapers/wallpaper.jpg
 
 # Launch Flameshot on boot
 exec_always --no-startup-id flameshot
@@ -246,7 +246,7 @@ bindsym Print exec flameshot gui
 # exec_always --no-startup-id redshift -P -O 3000
 
 # enable tap to click
-exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+# exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 
 # keyboard backlight:
 #on
@@ -255,7 +255,8 @@ bindsym Prior exec msi-perkeyrgb --model GS65 -s ffb300
 bindsym Next exec msi-perkeyrgb --model GS65 -d
 
 # Lock screen and suspend
-bindsym ctrl+$alt+l exec "i3lock -i ~/pictures/wallpapers/wallpaper.png && systemctl suspend"
+bindsym ctrl+$alt+l exec "i3lock -i ~/Pictures/wallpapers/wallpaper.png && systemctl suspend"
+bindsym ctrl+$alt+Shift+l exec "i3lock -i ~/Pictures/wallpapers/wallpaper.png
 
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [title="Android Emulator"] floating enable
