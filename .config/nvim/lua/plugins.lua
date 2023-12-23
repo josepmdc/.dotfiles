@@ -1,52 +1,66 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
 -- expects the name of the config file
 local function get_config(name)
-    return string.format('require("config.%s")', name)
+    return function ()
+        require(string.format('config.%s', name))
+    end
 end
 
--- bootstrap packer if not installed
-if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({
+-- bootstrap lazy.nvim if not installed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
         "git",
         "clone",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
     })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-
-    -- lsp servers and config
-    use {
+local plugins = {
+    {
         "williamboman/mason.nvim",
-        requires = {
+        dependencies = {
             "neovim/nvim-lspconfig",
             "williamboman/mason-lspconfig.nvim",
         },
         config = get_config('lsp'),
-    }
-
+    },
     -- Color Theme
-    use 'habamax/vim-gruvbit'
-    use 'rebelot/kanagawa.nvim'
-
+    { 'habamax/vim-gruvbit' },
+    {
+        'rebelot/kanagawa.nvim',
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            require('kanagawa').setup({
+                undercurl = true,
+                colors = {
+                    bg = "#1d2021",
+                    carpYellow = "#fabd2f",
+                    surimiOrange = "#fe8019",
+                    oniViolet = "#d3869b",
+                    waveRed = "#ed5745",
+                }
+            })
+            vim.cmd "colorscheme kanagawa"
+        end
+    },
     -- Snippets
-    use({ "rafamadriz/friendly-snippets" })
-    use({
+    { "rafamadriz/friendly-snippets" },
+    {
         "L3MON4D3/LuaSnip",
-        requires = "saadparwaiz1/cmp_luasnip",
+        dependencies = "saadparwaiz1/cmp_luasnip",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
-    })
-
+    },
     -- Autocomplete
-    use({
+    {
         'hrsh7th/nvim-cmp',
-        requires = {
+        dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
@@ -54,79 +68,67 @@ return require('packer').startup(function()
             'L3MON4D3/LuaSnip',
         },
         config = get_config('cmp'),
-    })
-
-    use({
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         config = get_config("treesitter"),
-        run = ":TSUpdate",
-    })
-
-    use({
+        build = ":TSUpdate",
+    },
+    {
         'nvim-telescope/telescope.nvim',
-        requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    })
-
+        dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    },
     -- LaTeX
-    use 'lervag/vimtex'
+    { 'lervag/vimtex' },
     -- Git
-    use 'tpope/vim-fugitive'
+    { 'tpope/vim-fugitive' },
     -- Diagnostics
-    use 'folke/trouble.nvim'
+    { 'folke/trouble.nvim' },
     -- Zen mode
-    use 'folke/zen-mode.nvim'
-
+    { 'folke/zen-mode.nvim' },
     -- auto-pairs
-    use({
+    {
         "windwp/nvim-autopairs",
         config = function() require('nvim-autopairs').setup() end
-    })
-
+    },
     -- status bar
-    use({
+    {
         "nvim-lualine/lualine.nvim",
         config = get_config("lualine"),
         event = "VimEnter",
-        requires = { "kyazdani42/nvim-web-devicons" },
-    })
-
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+    },
     -- Buffer Tabs
-    use({
+    {
         "akinsho/bufferline.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
+        dependencies = "kyazdani42/nvim-web-devicons",
         config = get_config("bufferline"),
-    })
-
+    },
     -- File tree
-    use({
+    {
         "kyazdani42/nvim-tree.lua",
         config = function() require 'nvim-tree'.setup() end
-    })
-
+    },
     -- Go
-    use({
+    {
         "ray-x/go.nvim",
         ft = { "go" },
         config = function() require 'go'.setup() end,
-        requires = { 'ray-x/guihua.lua' }
-    })
-
-    use({
+        dependencies = { 'ray-x/guihua.lua' }
+    },
+    {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
             require("lsp_lines").setup()
         end,
-    })
-
-    use({
+    },
+    {
         'rcarriga/nvim-notify',
         config = function()
             require("notify").setup()
+            vim.notify = require("notify")
         end
-    })
+    }
+}
 
-    -- Automatically set up configuration after cloning packer.nvim
-    if Packer_bootstrap then
-        require('packer').sync()
-    end
-end)
+require("lazy").setup(plugins, opts)

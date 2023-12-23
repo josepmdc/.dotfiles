@@ -1,3 +1,4 @@
+
 local opt = vim.opt
 local wo = vim.wo
 
@@ -12,24 +13,7 @@ opt.autoindent = true
 opt.smartindent = true
 opt.mouse = "a"
 opt.updatetime = 500
-
 opt.termguicolors = true
-
-
-require('kanagawa').setup({
-    undercurl = true,
-    colors = {
-        bg = "#1d2021",
-        carpYellow = "#fabd2f",
-        surimiOrange = "#fe8019",
-        oniViolet = "#d3869b",
-        waveRed = "#ed5745",
-    }
-})
-
-vim.cmd "colorscheme kanagawa"
-
-vim.notify = require("notify")
 
 wo.colorcolumn = "80"
 wo.number = true
