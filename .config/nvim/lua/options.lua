@@ -1,4 +1,3 @@
-
 local opt = vim.opt
 local wo = vim.wo
 
@@ -6,7 +5,6 @@ opt.expandtab = true -- convert tabs to spaces
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.clipboard = "unnamedplus"
-opt.fileencoding = "utf-8"
 opt.ignorecase = true
 opt.smartcase = true
 opt.autoindent = true
@@ -37,7 +35,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
     end
 })
 
--- Limit line width on markdown files
+-- Limit line width on some files
 vim.api.nvim_create_autocmd(
     { "BufRead", "BufNewFile" },
     { pattern = { "*.md", "*.tex" }, command = "set textwidth=80" }

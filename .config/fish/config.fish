@@ -1,12 +1,7 @@
 # remove greeting message
 set fish_greeting
 
-# Start X at login
-if status is-login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty >/dev/null 2>&1
-    end
-end
+fish_vi_key_bindings
 
 # autocomplete with ctrl+space in vi insert mode
 bind -M insert -k nul forward-char

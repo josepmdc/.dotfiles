@@ -1,6 +1,6 @@
 -- expects the name of the config file
 local function get_config(name)
-    return function ()
+    return function()
         require(string.format('config.%s', name))
     end
 end
@@ -29,7 +29,6 @@ local plugins = {
         config = get_config('lsp'),
     },
     -- Color Theme
-    { 'habamax/vim-gruvbit' },
     {
         'rebelot/kanagawa.nvim',
         lazy = false,    -- make sure we load this during startup if it is your main colorscheme
@@ -38,14 +37,17 @@ local plugins = {
             require('kanagawa').setup({
                 undercurl = true,
                 colors = {
-                    bg = "#1d2021",
-                    carpYellow = "#fabd2f",
-                    surimiOrange = "#fe8019",
-                    oniViolet = "#d3869b",
-                    waveRed = "#ed5745",
+                    theme = {
+                        all = {
+                            ui = {
+                                bg = "#1d2021",
+                                bg_gutter = "none"
+                            }
+                        }
+                    }
                 }
             })
-            vim.cmd "colorscheme kanagawa"
+            require("kanagawa").load("dragon") -- wave (default), dragon, lotus
         end
     },
     -- Snippets
@@ -113,7 +115,23 @@ local plugins = {
     {
         "ray-x/go.nvim",
         ft = { "go" },
-        config = function() require 'go'.setup() end,
+        config = function()
+            require 'go'.setup({
+                -- trouble = true,
+                luasnip = true,
+                icons = { breakpoint = '🔴', currentpos = '▶️' },
+                test_runner = 'richgo',
+                run_in_floaterm = true,
+                floaterm = {
+                    posititon = 'bottom', -- one of {`top`, `bottom`, `left`, `right`, `center`, `auto`}
+                    width = 0.75,
+                    height = 0.5,
+                },
+                diagnostic = {
+                    virtual_text = false,
+                },
+            })
+        end,
         dependencies = { 'ray-x/guihua.lua' }
     },
     {
@@ -128,7 +146,31 @@ local plugins = {
             require("notify").setup()
             vim.notify = require("notify")
         end
-    }
+    },
+    {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "theHamsta/nvim-dap-virtual-text"
+        }
+    },
 }
 
 require("lazy").setup(plugins, opts)
