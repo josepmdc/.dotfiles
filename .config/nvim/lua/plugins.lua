@@ -51,10 +51,12 @@ local plugins = {
         end
     },
     -- Snippets
-    { "rafamadriz/friendly-snippets" },
     {
         "L3MON4D3/LuaSnip",
-        dependencies = "saadparwaiz1/cmp_luasnip",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            "saadparwaiz1/cmp_luasnip",
+        },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
@@ -115,23 +117,7 @@ local plugins = {
     {
         "ray-x/go.nvim",
         ft = { "go" },
-        config = function()
-            require 'go'.setup({
-                -- trouble = true,
-                luasnip = true,
-                icons = { breakpoint = '🔴', currentpos = '▶️' },
-                test_runner = 'richgo',
-                run_in_floaterm = true,
-                floaterm = {
-                    posititon = 'bottom', -- one of {`top`, `bottom`, `left`, `right`, `center`, `auto`}
-                    width = 0.75,
-                    height = 0.5,
-                },
-                diagnostic = {
-                    virtual_text = false,
-                },
-            })
-        end,
+        config = get_config('go'),
         dependencies = { 'ray-x/guihua.lua' }
     },
     {
