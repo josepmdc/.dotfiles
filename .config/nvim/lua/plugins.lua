@@ -80,7 +80,12 @@ local plugins = {
     },
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+        dependencies = {
+            "nvim-lua/popup.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-frecency.nvim",
+        },
+        config = get_config("telescope"),
     },
     -- LaTeX
     { 'lervag/vimtex' },

@@ -8,4 +8,5 @@ return {
     "tsserver",
     "jdtls",
     "ltex",
+    "yamlls",
 }

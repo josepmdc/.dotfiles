@@ -27,7 +27,7 @@ map("n", "<leader><space>", ":noh<CR>", silent)
 map("n", "<leader>w", ":up<CR>", silent)
 
 -- == Telescope ==
-map("n", "<C-p>", ":Telescope find_files<CR>", silent)
+map("n", "<C-p>", ":Telescope frecency<CR>", silent)
 map("n", "<C-f>", ":Telescope live_grep<CR>", silent)
 map("n", "<C-l>", ":Telescope buffers<CR>", silent)
 
