@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# NAME="acestream"
+NAME="acelink"
+
+docker start $NAME > /dev/null 2>&1 || {
+    echo "Running container..."
+    # docker run -p 6878:6878 -d --name=$NAME "josepm/$NAME":latest
+    docker run --rm -p 6878:6878 --name=$NAME blaiseio/$NAME
+}
+
+sleep 3
+
+echo "Container started"
+
+acestream_uri_scheme="acestream://"
+content_id=${1#"$acestream_uri_scheme"}
+
+stream_url=$(curl -Ls -o /dev/null -w %{url_effective} "http://127.0.0.1:6878/ace/manifest.m3u8?content_id=$content_id")
+
+mpv $stream_url --really-quiet &
