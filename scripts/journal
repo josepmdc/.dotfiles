@@ -1,0 +1,10 @@
+#!/bin/bash
+
+Date="$(date +%Y-%m-%d).md"
+title=$(LANG=ca_ES.utf8 date +"%A %d %b %Y")
+FILE=~/journal/$Date
+if [ ! -f $FILE ]; then
+    printf "# ${title^} \n" >> $FILE
+fi
+
+nvim $FILE
