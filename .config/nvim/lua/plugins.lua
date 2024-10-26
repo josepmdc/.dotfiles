@@ -1,167 +1,88 @@
 -- expects the name of the config file
 local function get_config(name)
     return function()
-        require(string.format('config.%s', name))
+        require(string.format("config.%s", name))
     end
 end
 
 -- bootstrap lazy.nvim if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({
+        "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out,                            "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    {
-        "williamboman/mason.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "williamboman/mason-lspconfig.nvim",
-        },
-        config = get_config('lsp'),
-    },
     -- Color Theme
-    {
-        'rebelot/kanagawa.nvim',
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            require('kanagawa').setup({
-                undercurl = true,
-                colors = {
-                    theme = {
-                        all = {
-                            ui = {
-                                bg = "#1d2021",
-                                bg_gutter = "none"
-                            }
-                        }
-                    }
-                }
-            })
-            require("kanagawa").load("dragon") -- wave (default), dragon, lotus
-        end
-    },
-    -- Snippets
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            "saadparwaiz1/cmp_luasnip",
-        },
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
+    require 'plugins.colors',
     -- Autocomplete
-    {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp-signature-help',
-            'L3MON4D3/LuaSnip',
-        },
-        config = get_config('cmp'),
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        config = get_config("treesitter"),
-        build = ":TSUpdate",
-    },
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = {
-            "nvim-lua/popup.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope-frecency.nvim",
-        },
-        config = get_config("telescope"),
-    },
+    require 'plugins.autocomplete',
+    -- Autoformat
+    require 'plugins.autoformat',
+    -- Syntax highlighting
+    require 'plugins.treesitter',
+    -- LSP
+    require 'plugins.lsp',
+    -- Telescope
+    require 'plugins.telescope',
     -- LaTeX
-    { 'lervag/vimtex' },
+    { "lervag/vimtex" },
     -- Git
-    { 'tpope/vim-fugitive' },
-    -- Diagnostics
-    { 'folke/trouble.nvim' },
+    { "tpope/vim-fugitive" },
+    require 'plugins.gitsigns',
+    -- Copilot
+    { "github/copilot.vim" },
     -- Zen mode
-    { 'folke/zen-mode.nvim' },
+    { "folke/zen-mode.nvim" },
     -- auto-pairs
-    {
-        "windwp/nvim-autopairs",
-        config = function() require('nvim-autopairs').setup() end
-    },
+    require 'plugins.autopairs',
+    -- debugger
+    require 'plugins.debug',
+    -- add indentation guides
+    { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
+    -- linting
+    require 'plugins.lint',
+    -- autopairs
+    require 'plugins.autopairs',
+    -- file tree
+    require 'plugins.neo-tree',
+    -- bufferline
+    require 'plugins.bufferline',
     -- status bar
     {
         "nvim-lualine/lualine.nvim",
         config = get_config("lualine"),
         event = "VimEnter",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-    },
-    -- Buffer Tabs
-    {
-        "akinsho/bufferline.nvim",
-        dependencies = "kyazdani42/nvim-web-devicons",
-        config = get_config("bufferline"),
-    },
-    -- File tree
-    {
-        "kyazdani42/nvim-tree.lua",
-        config = function() require 'nvim-tree'.setup() end
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     -- Go
-    {
-        "ray-x/go.nvim",
-        ft = { "go" },
-        config = get_config('go'),
-        dependencies = { 'ray-x/guihua.lua' }
-    },
+    require 'plugins.go',
+    -- LSP lines
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
             require("lsp_lines").setup()
         end,
     },
+    -- Pretty notifications
     {
-        'rcarriga/nvim-notify',
+        "rcarriga/nvim-notify",
         config = function()
             require("notify").setup()
             vim.notify = require("notify")
-        end
-    },
-    {
-        'kristijanhusak/vim-dadbod-ui',
-        dependencies = {
-            { 'tpope/vim-dadbod',                     lazy = true },
-            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-        },
-        cmd = {
-            'DBUI',
-            'DBUIToggle',
-            'DBUIAddConnection',
-            'DBUIFindBuffer',
-        },
-        init = function()
-            -- Your DBUI configuration
-            vim.g.db_ui_use_nerd_fonts = 1
         end,
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = {
-            "mfussenegger/nvim-dap",
-            "theHamsta/nvim-dap-virtual-text"
-        }
     },
 }
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins, {})

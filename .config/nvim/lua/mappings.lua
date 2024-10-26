@@ -2,8 +2,9 @@ local map = vim.keymap.set
 local silent = { silent = true }
 
 --Remap space as leader key
-map({ "n", "v" }, "<Space>", "<Nop>", silent)
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = true
 
 -- Insert new line and stay in normal mode
 map("n", "<leader>o", "o<Esc>", silent)
@@ -21,38 +22,23 @@ map("n", "<S-Up>", "<C-Y>", silent)
 map("v", "//", "y/\\V<C-R>=escape(@\",'/\')<CR><CR>", silent)
 
 -- clear search
-map("n", "<leader><space>", ":noh<CR>", silent)
+map("n", "<Esc>", ":noh<CR>", silent)
 
 -- save
 map("n", "<leader>w", ":up<CR>", silent)
+
+-- Diagnostic keymaps
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- == Telescope ==
 map("n", "<C-p>", ":Telescope frecency<CR>", silent)
 map("n", "<C-f>", ":Telescope live_grep<CR>", silent)
 map("n", "<C-l>", ":Telescope buffers<CR>", silent)
 
--- == Trouble ==
-map("n", "<leader>tt", ":TroubleToggle workspace_diagnostics<CR>", silent)
-map("n", "<leader>tr", ":TroubleToggle lsp_references<CR>", silent)
-
 -- == Open URL in browser ==
 map("n", "gx", ":!open <cWORD><CR>", silent)
-
---  == Change buffer ==
-map("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", silent)
-map("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", silent)
-map("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", silent)
-map("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", silent)
-map("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", silent)
-map("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", silent)
-map("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", silent)
-map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", silent)
-map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", silent)
-map("n", "<Tab>"    , ":BufferLineCycleNext<CR>"   , silent)
-map("n", "<S-Tab>"  , ":BufferLineCyclePrev<CR>"   , silent)
-
--- == File tree ==
-map("n", "<C-b>", ":NvimTreeToggle<CR>", silent)
 
 -- delete without yanking
 map({ "n", "v" }, "<leader>d", '"_d', silent)

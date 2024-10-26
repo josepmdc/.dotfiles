@@ -13,6 +13,7 @@ require('lualine').setup({
     },
     sections = {
         lualine_a = {
+            { 'mode', separator = { left = '', right = '' } },
             { 'branch', separator = { left = '', right = '' } },
         },
         lualine_b = {
