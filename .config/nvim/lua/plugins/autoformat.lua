@@ -19,5 +19,8 @@ return {
                 timeout_ms = 500,
             }
         end,
+        formatters_by_ft = {
+            templ = { "templ" },
+        },
     },
 }
