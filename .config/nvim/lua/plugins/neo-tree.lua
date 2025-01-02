@@ -16,9 +16,9 @@ return {
                 mappings = {
                     ['<C-b>'] = 'close_window',
                     ['F'] = function(state)
-                        local node = state.tree:get_node()
-                        local filepath = node:get_id()
-                        require('telescope.builtin').live_grep({ search_dirs = { filepath } })
+                        -- grep inside the directory where the cursor is on
+                        local selected_path = state.tree:get_node():get_id()
+                        require('telescope.builtin').live_grep({ search_dirs = { selected_path } })
                     end,
                 },
             },
