@@ -51,3 +51,9 @@ map("n", "<leader>e", require("lsp_lines").toggle, silent)
 
 -- ESC to exit terminal mode
 map("t", "<Esc>", "<C-\\><C-n>")
+
+-- restart LSP
+map("n", "<leader>r", ":LspRestart<CR>", silent)
+
+-- close buffer
+map("n", "<leader>bd", ":bd<CR>", silent)

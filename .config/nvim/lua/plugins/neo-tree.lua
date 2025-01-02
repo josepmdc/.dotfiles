@@ -15,6 +15,11 @@ return {
             window = {
                 mappings = {
                     ['<C-b>'] = 'close_window',
+                    ['F'] = function(state)
+                        local node = state.tree:get_node()
+                        local filepath = node:get_id()
+                        require('telescope.builtin').live_grep({ search_dirs = { filepath } })
+                    end,
                 },
             },
             follow_current_file = {
