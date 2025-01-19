@@ -32,7 +32,15 @@ return {
                 },
                 file_ignore_patterns = {
                     "mocks",
-                }
+                },
+                mappings = {
+                    i = {
+                        ['<c-d>'] = require('telescope.actions').delete_buffer,
+                    },
+                    n = {
+                        ['<c-d>'] = require('telescope.actions').delete_buffer,
+                    },
+                },
             },
         }
 
@@ -47,7 +55,7 @@ return {
         map('n', '<leader><leader>', function() builtin.find_files({ hidden = true }) end, { desc = '[F]ind [F]iles' })
         map('n', '<leader>fb', builtin.builtin, { desc = '[F]ind [B]uiltin' })
         map('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
-        map('n', '<leader>g', builtin.live_grep, { desc = '[F]ind by [G]rep' })
+        map('n', '<leader>fs', builtin.live_grep, { desc = '[F]ind [S]tring' })
         map('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
         map('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
         map('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })

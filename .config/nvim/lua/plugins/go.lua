@@ -16,6 +16,11 @@ return {
                 virtual_text = false,
             },
         })
+
+        local map = vim.keymap.set
+
+        map("n", "<leader>gt", ":GoTestFile<CR>")
+        map("n", "<leader>gts", ":GoTestSubCase<CR>")
     end,
     dependencies = { "ray-x/guihua.lua" },
 }

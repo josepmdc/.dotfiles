@@ -32,11 +32,6 @@ map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic m
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- == Telescope ==
-map("n", "<C-p>", ":Telescope frecency<CR>", silent)
-map("n", "<C-f>", ":Telescope live_grep<CR>", silent)
-map("n", "<C-l>", ":Telescope buffers<CR>", silent)
-
 -- == Open URL in browser ==
 map("n", "gx", ":!open <cWORD><CR>", silent)
 

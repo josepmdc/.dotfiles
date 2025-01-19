@@ -11,7 +11,8 @@ return {
                     return " " .. icon .. count
                 end,
                 show_buffer_icons = false,
-            }
+                sort_by = 'directory',
+            },
         })
         vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
         vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
