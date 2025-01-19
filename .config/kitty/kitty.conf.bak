@@ -1,13 +1,13 @@
 window_margin_width 0 10
 
-# BEGIN_KITTY_FONTS
-font_family      family="BlexMono Nerd Font Mono"
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
+#: Font {{{
+font_family      Blex Mono Medium Nerd Font Complete Mono
+bold_font        Blex Mono Bold Nerd Font Complete Mono
+italic_font      Blex Mono Medium Italic Nerd Font Complete Mono
+bold_italic_font Blex Mono Bold Italic Nerd Font Complete Mono
 
 font_size 10.0
-# END_KITTY_FONTS
+#: }}}
 
 #: Cursor {{{
 cursor #cccccc
@@ -109,5 +109,5 @@ inactive_tab_font_style normal
 tab_bar_background none
 #: }}}
 
-map ctrl+ñ clear_terminal clear active
+map ctrl+ñ clear_terminal scrollback active
 map ctrl+shift+g show_last_command_output
