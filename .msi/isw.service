@@ -1,0 +1,13 @@
+# this unit will remove the airplane mode hard block after sleep in MSI GS65
+# source: https://wiki.archlinux.org/title/Talk:MSI_GS65#c-Idioticacid-20240516232400-Jorrifransen-2018-07-23T10:47:00.000Z
+
+[Unit]
+After=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=isw -s 0x34 48
+ExecStart=isw -s 0x2e 9
+
+[Install]
+WantedBy=multi-user.target sleep.target
