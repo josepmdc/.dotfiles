@@ -1,0 +1,51 @@
+* {
+  font-family: 'BlexMono Nerd Font', monospace;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+window#waybar {
+  background: #1e1e1e;
+}
+
+.modules-right > widget > * {
+  padding: 0 6px;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
+#workspaces button.visible {
+  color: #ffffff;
+}
+
+#workspaces button.active {
+  color: #000000;
+}
+
+#workspaces button.urgent {
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 1em;
+  color: @red;
+}
+
+#pulseaudio-slider trough {
+    min-height: 7px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: black;
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: #1bf29c;
+}
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}

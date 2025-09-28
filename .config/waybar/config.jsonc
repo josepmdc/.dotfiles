@@ -1,0 +1,107 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "group/volume",
+    "cpu",
+    "battery",
+    "backlight",
+    "tray",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
+  "clock": {
+    "format": "{:%d/%m/%Y - %H:%M}",
+    "format-alt": "{:%H:%M // %A, %B %d, %Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ffead3'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "cpu": {
+    "format": "  {usage}%"
+  },
+  "battery": {
+    "format": "{icon}  {capacity}%",
+    "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+    "format-full": "<span font='Font Awesome 5 Free'></span> 100%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 10
+    }
+  },
+  "tray": {
+    "spacing": 10,
+    "icon-size": 13
+  },
+  "pulseaudio": {
+    "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {volume}%",
+    "format-bluetooth": "<span font='Font Awesome 5 Free 11'> {icon}</span> {volume:4}%",
+    "format-alt": "<span font='Font Awesome 5 Free 11'>{icon}</span> {volume:4}%",
+    "format-alt-click": "click-right",
+    "format-muted": "<span font='Font Awesome 5 Free 11'></span>",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 2,
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "group/volume": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ],
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power"
+    }
+  },
+  "backlight": {
+    "format": " {percent}%"
+  }
+}
