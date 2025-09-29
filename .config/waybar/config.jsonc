@@ -10,20 +10,17 @@
     "cpu",
     "battery",
     "backlight",
-    "tray",
-    "clock"
+    "clock",
+    "tray"
   ],
   "hyprland/workspaces": {
-    "format": "{name}",
-    "format-icons": {
-      "active": "",
-      "default": ""
-    }
+    "format": "{name}"
   },
   "clock": {
     "format": "{:%d/%m/%Y - %H:%M}",
-    "format-alt": "{:%H:%M // %A, %B %d, %Y}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d/%m/%Y - %H:%M:%S}",
+    "interval": 1,
+    "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "year",
       "mode-mon-col": 3,
@@ -48,8 +45,8 @@
   },
   "battery": {
     "format": "{icon}  {capacity}%",
-    "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-    "format-full": "<span font='Font Awesome 5 Free'></span> 100%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-icons": [
       "",
       "",
@@ -57,7 +54,7 @@
       "",
       ""
     ],
-    "interval": 30,
+    "interval": 10,
     "states": {
       "warning": 25,
       "critical": 10
@@ -68,15 +65,14 @@
     "icon-size": 13
   },
   "pulseaudio": {
-    "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {volume}%",
-    "format-bluetooth": "<span font='Font Awesome 5 Free 11'> {icon}</span> {volume:4}%",
-    "format-alt": "<span font='Font Awesome 5 Free 11'>{icon}</span> {volume:4}%",
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": " {icon} {volume:4}%",
+    "format-alt": "{icon} {volume:4}%",
     "format-alt-click": "click-right",
-    "format-muted": "<span font='Font Awesome 5 Free 11'></span>",
+    "format-muted": "  0%",
     "format-icons": {
       "default": [
         "",
-        "",
         "",
         ""
       ]
@@ -102,6 +98,6 @@
     }
   },
   "backlight": {
-    "format": " {percent}%"
+    "format": "  {percent}%"
   }
 }
