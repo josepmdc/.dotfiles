@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "bottom",
   "modules-left": [
-    "hyprland/workspaces"
+    "niri/workspaces"
   ],
   "modules-center": [],
   "modules-right": [
@@ -13,8 +13,8 @@
     "clock",
     "tray"
   ],
-  "hyprland/workspaces": {
-    "format": "{name}"
+  "niri/workspaces": {
+    "format": "{index}"
   },
   "clock": {
     "format": "{:%d/%m/%Y - %H:%M}",
@@ -37,7 +37,8 @@
     "actions": {
       "on-click-right": "mode",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
+      "on-scroll-down": "shift_down",
+      "smooth-scrolling-threshold": 5.0
     }
   },
   "cpu": {

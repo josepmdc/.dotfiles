@@ -51,6 +51,10 @@ sudo pacman -S \
     hyprlock
     hypridle
     hyprpolkitagent
+    niri
+    swaybg
+    xdg-desktop-portal-gnome
+    gnome-keyring
     papirus-icon-theme
 echo "Done!"
 

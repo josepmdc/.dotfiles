@@ -1,12 +1,17 @@
 # remove greeting message
 set fish_greeting
 
+# enable vi keybindings
 fish_vi_key_bindings
 
-# autocomplete with ctrl+space in vi insert mode
-bind -M insert -k nul forward-char
+# use block cursor
+set -g fish_vi_force_cursor 1
+set fish_cursor_insert block
 
-alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# autocomplete with ctrl+space in vi insert mode
+bind -M insert ctrl-space accept-autosuggestion
+
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias vi='nvim'
 alias ls='exa'
 alias la='exa -la'
