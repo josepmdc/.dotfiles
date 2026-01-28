@@ -1,17 +1,19 @@
 {
   "layer": "top",
-  "position": "bottom",
+  "position": "top",
+  "margin": "5px 5px 0 5px",
   "modules-left": [
     "niri/workspaces"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
-    "group/volume",
-    "cpu",
-    "battery",
+    "tray",
+    "pulseaudio",
     "backlight",
-    "clock",
-    "tray"
+    "cpu",
+    "battery"
   ],
   "niri/workspaces": {
     "format": "{index}"
@@ -81,22 +83,6 @@
     "scroll-step": 2,
     "on-click": "pavucontrol",
     "tooltip": false
-  },
-  "pulseaudio/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "horizontal"
-  },
-  "group/volume": {
-    "orientation": "horizontal",
-    "modules": [
-      "pulseaudio",
-      "pulseaudio/slider"
-    ],
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "not-power"
-    }
   },
   "backlight": {
     "format": "  {percent}%"
