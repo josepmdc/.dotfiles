@@ -13,9 +13,9 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            layout "es"
+            layout "us"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-            options "caps:swapescape"
+            options "caps:swapescape,compose:ralt"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
@@ -32,7 +32,7 @@ input {
     touchpad {
         // off
         tap
-        // dwt
+        dwt
         // dwtp
         // drag false
         // drag-lock
@@ -108,6 +108,10 @@ output "eDP-1" {
 }
 
 output "DP-1" {
+    position x=0 y=0
+}
+
+output "DP-3" {
     position x=0 y=0
 }
 
@@ -272,9 +276,8 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "-i" "/home/josepmdc/Pictures/wallpapers/wallpaper.jpg"
+spawn-at-startup "swaybg" "-i" "/home/josep-maria-catafal/Pictures/wallpapers/pattern.png"
 spawn-at-startup "hypridle"
 spawn-at-startup "systemctl" "--user" "start" "hyprpolkitagent"
 
@@ -375,8 +378,8 @@ binds {
     Mod+Ctrl+P hotkey-overlay-title="Power Menu: fuzzel" { spawn "~/.config/niri/powermenu.sh"; }
     Mod+B hotkey-overlay-title="Open browser: firefox" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="Open file manager" { spawn "nautilus"; }
-    Ctrl+Alt+Shift+L hotkey-overlay-title="Lock the screen" { spawn "hyprlock"; }
-    Ctrl+Alt+L hotkey-overlay-title="Lock the screen and suspend" { spawn "bash" "-c" "hyprlock & disown && systemctl suspend"; }
+    Ctrl+Alt+Shift+L hotkey-overlay-title="Lock the screen" { spawn "swaylock" "-i" "~/Pictures/wallpapers/wallpaper.png"; }
+    Ctrl+Alt+L hotkey-overlay-title="Lock the screen and suspend" { spawn "bash" "-c" "swaylock -i ~/Pictures/wallpapers/wallpaper.png & disown && systemctl suspend"; }
  
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -400,6 +403,8 @@ binds {
     // but you need to manually put each argument in separate "" quotes.
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+1%"; }
+    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "1%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
@@ -619,7 +624,8 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { spawn "flameshot" "gui"; }
+    // Print { spawn "flameshot" "gui"; }
+    Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
@@ -640,4 +646,8 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
