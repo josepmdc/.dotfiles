@@ -1,19 +1,19 @@
 {
   "layer": "top",
-  "position": "top",
-  "margin": "5px 5px 0 5px",
+  "position": "bottom",
+  "margin": "0 5px 5px 5px",
   "modules-left": [
     "niri/workspaces"
   ],
-  "modules-center": [
-    "clock"
-  ],
+  "modules-center": [],
   "modules-right": [
     "tray",
+    "power-profiles-daemon",
     "pulseaudio",
     "backlight",
     "cpu",
-    "battery"
+    "battery",
+    "clock"
   ],
   "niri/workspaces": {
     "format": "{index}"
@@ -86,5 +86,16 @@
   },
   "backlight": {
     "format": "  {percent}%"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   }
 }
