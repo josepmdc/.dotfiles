@@ -6,7 +6,7 @@ NAME="acelink"
 docker start $NAME > /dev/null 2>&1 || {
     echo "Running container..."
     # docker run -p 6878:6878 -d --name=$NAME "josepm/$NAME":latest
-    docker run --rm -p 6878:6878 --name=$NAME blaiseio/$NAME
+    docker run -d --rm -p 6878:6878 --name=$NAME ghcr.io/martinbjeldbak/acestream-http-proxy
 }
 
 sleep 3
@@ -16,6 +16,7 @@ echo "Container started"
 acestream_uri_scheme="acestream://"
 content_id=${1#"$acestream_uri_scheme"}
 
-stream_url=$(curl -Ls -o /dev/null -w %{url_effective} "http://127.0.0.1:6878/ace/manifest.m3u8?content_id=$content_id")
+stream_url="http://127.0.0.1:6878/ace/getstream?id=$content_id"
+echo stream_url: $stream_url
 
 mpv $stream_url --really-quiet &
